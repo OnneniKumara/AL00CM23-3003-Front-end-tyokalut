@@ -1,0 +1,40 @@
+<mat-card class="calc-card" appearance="outlined">
+  <mat-card-header>
+    <!--div mat-card-avatar class="example-header-image"></div-->
+    <mat-card-title>Laskin</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card class="calc-card-calAndRes" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{calculation}}</mat-card-title>
+  </mat-card-header>
+    </mat-card>
+    <mat-card class="calc-card-calAndRes" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>= {{result}}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="calc-card-memAndNotice" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>prev result  = {{previous}}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="calc-card-memAndNotice" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>MemSto: {{memSto}}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="calc-card-memAndNotice" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>notices:</mat-card-title>
+        <mat-card-subtitle>{{notices}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+<mat-grid-list cols="4" rowHeight="40px">
+  <mat-grid-tile
+    *ngFor="let button of buttons">
+    <button mat-stroked-button (click)="addValue(button)">{{button}}</button>
+  </mat-grid-tile>
+</mat-grid-list>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,20 @@
+/*.mat-grid-tile {
+  background: lightblue;
+}
+*/
+
+
+.calc-card {
+  max-width: 400px;
+  max-height: 700px;
+  margin: 0 auto;
+  display: flex;
+}
+.calc-card-calAndRes {
+  height: 50px;
+  text-align: justify;
+}
+.calc-card-memAndNotice {
+  height: 30px;
+  text-align: justify;
+}
