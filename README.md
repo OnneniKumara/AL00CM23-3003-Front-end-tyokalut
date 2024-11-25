@@ -1,5 +1,6 @@
-# AngularProjekti
+# AL00CM23-3003-Front-end-tyokalut - Angular Projekti
 
+---
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
 
 ## Development server
