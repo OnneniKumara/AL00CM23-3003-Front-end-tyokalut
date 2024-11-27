@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
-import {MatButton, MatButtonModule, MatFabButton} from '@angular/material/button';
-import {MatSlider, MatSliderModule, MatSliderThumb} from '@angular/material/slider';
-import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {CalcComponent} from '../components/calc/calc.component';
 
 @Component({
   selector: 'app-hello-world',
