@@ -34,15 +34,15 @@ export class CalcComponent {
   calculation:string = ''
 
   // laskimen muististringi
-  memSto:string=''
+  memSto:string = ''
   // muuttuja edelliselle tulokselle
   previous = '';
 
   // lopputulema
-  result:string ='';
+  result:string = '';
 
   // ilmoitukset
-  notices:string =''
+  notices:string = ''
 
   addValue(value:string)
       {
@@ -54,7 +54,7 @@ export class CalcComponent {
         if (value == '=')
         {
             // tsekataan ettei ole tyhjä laskustringi
-            if (this.calculation =='')
+            if (this.calculation == '')
             {
               // herja
               this.notices = 'ei voi laskea, ei laskettavaa -> tyhjä calculation string!'
@@ -102,7 +102,7 @@ export class CalcComponent {
                           + '\nedellinen tulos/previous muuttujan arvo: ' + this.previous)
 
               // asetetaan edelliseen tulokseen nykyinen tulos
-              this.previous = this.previous
+              this.previous = this.result
 
               // tyhjätään laskustringi
               // this.calculation = ''
@@ -121,7 +121,6 @@ export class CalcComponent {
               this.calculation = ''
               return;
             }
-
         }
         // laskutoimitusstringin tyhjäys jos painallus on 'Clr'
         if (value == 'Clr')
@@ -142,7 +141,6 @@ export class CalcComponent {
           console.log('Del- poista yksi merkki - laskutoimitus nyt: ' + this.calculation)
           return;
         }
-
 
         // MemStore nappi eli muistiin tallennus
         if (value == 'MemSto')
