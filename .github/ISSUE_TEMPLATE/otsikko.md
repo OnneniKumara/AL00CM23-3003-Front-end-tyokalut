@@ -1,7 +1,7 @@
 ---
 name: Otsikko
 about: Kuvaile tähän
-title: ''
+title: 'issue pohja - minä assignoitu'
 labels: enhancement
 assignees: OnneniKumara
 
