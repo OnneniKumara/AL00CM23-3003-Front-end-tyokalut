@@ -1,7 +1,7 @@
 ---
-name: Otsikko
+name: issue pohja - minä assignoitu
 about: Kuvaile tähän
-title: 'issue pohja - minä assignoitu'
+title: 'Otsikko tähän'
 labels: enhancement
 assignees: OnneniKumara
 
