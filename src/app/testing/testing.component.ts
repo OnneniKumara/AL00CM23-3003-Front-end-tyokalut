@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CalcComponent} from '../components/calc/calc.component';
 import {FormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
@@ -6,7 +6,6 @@ import {MatSlider, MatSliderThumb} from '@angular/material/slider';
 
 @Component({
   selector: 'app-testing',
-  standalone: true,
   imports: [
     CalcComponent,
     FormsModule,

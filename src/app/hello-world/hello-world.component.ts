@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-hello-world',
-  standalone: true,
   imports: [
     FormsModule,
   ],

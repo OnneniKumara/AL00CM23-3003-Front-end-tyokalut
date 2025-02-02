@@ -1,16 +1,15 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatGridListModule, MatGridTile} from '@angular/material/grid-list';
-import {MatButtonModule, MatButton} from '@angular/material/button';
+import {MatButton, MatButtonModule} from '@angular/material/button';
 import {NgForOf} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-calc',
-  standalone: true,
-  imports:  [MatGridListModule, MatButtonModule,
-            MatButton, NgForOf, MatGridTile,
-            MatCardModule
-            ],
+  imports: [MatGridListModule, MatButtonModule,
+    MatButton, NgForOf, MatGridTile,
+    MatCardModule
+  ],
   templateUrl: './calc.component.html',
   styleUrl: './calc.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
