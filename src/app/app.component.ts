@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {ToolbarComponent} from './toolbar/toolbar.component';
-import {routes} from './app.routes';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [RouterOutlet, ToolbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
