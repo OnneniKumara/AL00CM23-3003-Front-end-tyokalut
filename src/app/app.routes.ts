@@ -1,7 +1,7 @@
-import { Routes } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HelloWorldComponent } from './hello-world/hello-world.component';
-import { CalcComponent } from './components/calc/calc.component';
+import {Routes} from '@angular/router';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {HelloWorldComponent} from './hello-world/hello-world.component';
+import {CalcComponent} from './components/calc/calc.component';
 import {TestingComponent} from './testing/testing.component';
 
 export const routes: Routes = [
@@ -15,6 +15,7 @@ export const routes: Routes = [
     {
       path: 'calculator', component: CalcComponent,
       title: 'Calculator'
+
     },
     { path: 'testing-area', component: TestingComponent,
       title: 'Testausta je pelleilyä'

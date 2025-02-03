@@ -1,40 +1,97 @@
-<mat-card class="calc-card" appearance="outlined">
-  <mat-card-header>
-    <!--div mat-card-avatar class="example-header-image"></div-->
-    <mat-card-title>Laskin</mat-card-title>
-  </mat-card-header>
+<mat-card
+  *ngIf="active"
+  appearance="outlined"
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  class="calc-card"
+>
+
+
+  <div cdkDragHandle
+       class="drag-bar-cdk-drag-handle"
+  >
+    <!-- svg siirto-ikoni -->
+    <span>
+      <svg fill="currentColor" viewBox="0 0 24 24" width="24px">
+      <path
+        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+      <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+    </span>
+    <!-- laskimen otsikko -->
+    <span>Calculator</span>
+
+    <!-- sulje-nappi -->
+    <span>
+    <button (click)="onClose()"
+            mat-dialog-close
+            mat-icon-button
+
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+      </span>
+  </div>
+  <!-- laskimen kortin sisältö -->
   <mat-card-content>
-    <mat-card class="calc-card-calAndRes" appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>{{calculation}}</mat-card-title>
-  </mat-card-header>
-    </mat-card>
+
+
     <mat-card class="calc-card-calAndRes" appearance="outlined">
       <mat-card-header>
+        <!-- laskutoimitus -->
+        <mat-card-title>{{ calculation }}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+
+
+    <mat-card class="calc-card-calAndRes" appearance="outlined">
+      <mat-card-header>
+
+        <!-- tulos -->
         <mat-card-title>= {{result}}</mat-card-title>
       </mat-card-header>
     </mat-card>
+
     <mat-card class="calc-card-memAndNotice" appearance="outlined">
       <mat-card-header>
+
+        <!-- edellinen tulos -->
         <mat-card-title>prev result  = {{previous}}</mat-card-title>
       </mat-card-header>
     </mat-card>
+
     <mat-card class="calc-card-memAndNotice" appearance="outlined">
       <mat-card-header>
+
+        <!-- muistiin laittaminen -->
         <mat-card-title>MemSto: {{memSto}}</mat-card-title>
       </mat-card-header>
     </mat-card>
+
     <mat-card class="calc-card-memAndNotice" appearance="outlined">
       <mat-card-header>
         <mat-card-title>notices:</mat-card-title>
+
+        <!-- ilmoitukset -->
         <mat-card-subtitle>{{notices}}</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
-<mat-grid-list cols="4" rowHeight="40px">
+
+    <mat-grid-list cols="4" rowHeight="40px">
+      <!-- napit for loopilla -->
   <mat-grid-tile
     *ngFor="let button of buttons">
-    <button mat-stroked-button (click)="addValue(button)">{{button}}</button>
+    <button
+      (click)="addValue(button)"
+      class="calc-buttons"
+      mat-stroked-button>
+      {{ button }}
+    </button>
   </mat-grid-tile>
 </mat-grid-list>
+
   </mat-card-content>
 </mat-card>
+
+<!-- jos laskin ei ole aktiivinen eikä dialogissa, ei näytetä mitään -->
+<div *ngif="!active && !isInDialog()"></div>

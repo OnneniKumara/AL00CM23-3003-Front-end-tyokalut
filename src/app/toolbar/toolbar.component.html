@@ -1,20 +1,34 @@
 <mat-toolbar>
-  <button mat-button [matMenuTriggerFor]="menu">
+
+  <button [matMenuTriggerFor]="menu"
+          mat-button>
   <mat-icon>menu</mat-icon>
   </button>
   <span><h1>Front-End Työkalut</h1>Niko Mauranen</span>
+
 </mat-toolbar>
- <mat-menu #menu="matMenu">
-   <button mat-menu-item>
+
+<mat-menu #menu="matMenu">
+
+  <button (click)="openCalcDialog()"
+          mat-menu-item
+          routerLinkActive="active">Calculator
      <mat-icon>calculate</mat-icon>
-     <span><a routerLink="/calculator" routerLinkActive="active">Calculator</a></span>
+    <span>Calculator</span>
    </button>
-   <button mat-menu-item>
+
+  <button [routerLink]="'/hello'"
+          mat-menu-item
+          routerLinkActive="active">
      <mat-icon>waving_hand</mat-icon>
-     <span><a routerLink="/hello" routerLinkActive="active">Hello Universe!</a></span>
+    <span>Hello Universe</span>
    </button>
-   <button mat-menu-item>
+
+  <button [routerLink]="'/testing-area'"
+          mat-menu-item
+          routerLinkActive="active">
      <mat-icon>tips_and_updates</mat-icon>
-     <span><a routerLink="/testing-area" routerLinkActive="active">Testing area</a></span>
+    <span>Testing Area</span>
    </button>
- </mat-menu>
+
+</mat-menu>

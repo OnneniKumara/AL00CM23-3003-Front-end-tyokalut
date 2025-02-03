@@ -1,20 +1,58 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Optional} from '@angular/core';
 import {MatGridListModule, MatGridTile} from '@angular/material/grid-list';
 import {MatButton, MatButtonModule} from '@angular/material/button';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
+import {CdkDrag, CdkDragHandle} from '@angular/cdk/drag-drop';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatIcon} from '@angular/material/icon';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-calc',
-  imports: [MatGridListModule, MatButtonModule,
-    MatButton, NgForOf, MatGridTile,
-    MatCardModule
+  imports: [MatGridListModule,
+    MatButtonModule,
+    MatButton,
+    NgForOf,
+    MatGridTile,
+    MatCardModule,
+    CdkDragHandle,
+    CdkDrag,
+    MatDialogModule,
+    MatIcon, NgIf,
   ],
   templateUrl: './calc.component.html',
   styleUrl: './calc.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+
 export class CalcComponent {
+
+  active: boolean = true;
+
+  constructor(private router: Router,
+              @Optional() private dialogRef: MatDialogRef<CalcComponent>) {
+  }
+
+  isInDialog(): boolean {
+    return !!this.dialogRef;
+  }
+
+  onClose() {
+    if (this.router.url === '/calculator') {
+      // Navigoi pääsivulle jos ollaan `/calculator`-reitillä
+      this.router.navigate(['/']).then(() => console.log('Navigoitu pääsivulle'));
+    } else if (this.router.url !== '/calculator') {
+      this.active = false;
+    } else {
+      // Sulje dialogi muissa tapauksissa
+      this.dialogRef.close();
+    }
+  }
+
+
+
 
   title:string ='Calculator/laskin'
 
