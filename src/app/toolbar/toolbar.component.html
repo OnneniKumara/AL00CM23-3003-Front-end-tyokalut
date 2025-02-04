@@ -1,8 +1,10 @@
+<!-- Menu/navigointi valikko -->
+
 <mat-toolbar>
 
   <button [matMenuTriggerFor]="menu"
           mat-button>
-  <mat-icon>menu</mat-icon>
+    <mat-icon>menu</mat-icon>
   </button>
   <span><h1>Front-End Työkalut</h1>Niko Mauranen</span>
 
@@ -10,25 +12,27 @@
 
 <mat-menu #menu="matMenu">
 
+  <!-- Elementit jotka menusta voi laukaista-->
+
   <button (click)="openCalcDialog()"
           mat-menu-item
           routerLinkActive="active">Calculator
-     <mat-icon>calculate</mat-icon>
+    <mat-icon>calculate</mat-icon>
     <span>Calculator</span>
-   </button>
+  </button>
 
   <button [routerLink]="'/hello'"
           mat-menu-item
           routerLinkActive="active">
-     <mat-icon>waving_hand</mat-icon>
+    <mat-icon>waving_hand</mat-icon>
     <span>Hello Universe</span>
-   </button>
+  </button>
 
   <button [routerLink]="'/testing-area'"
           mat-menu-item
           routerLinkActive="active">
-     <mat-icon>tips_and_updates</mat-icon>
+    <mat-icon>tips_and_updates</mat-icon>
     <span>Testing Area</span>
-   </button>
+  </button>
 
 </mat-menu>

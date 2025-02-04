@@ -10,14 +10,4 @@ import {ToolbarComponent} from './toolbar/toolbar.component';
 })
 export class AppComponent {
   title = 'angular_projekti';
-  jeppulisjee = 'onpa siistiä!';
-
-  // aktiivisen reitin otsikko
-  activeTitle:string = ''
-
-  // funktio jolla aktiivisen reitin otsikko asetetaan
-  setActiveRouteTitle()
-  {
-
-  }
 }

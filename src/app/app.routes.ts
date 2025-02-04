@@ -6,28 +6,29 @@ import {TestingComponent} from './testing/testing.component';
 
 export const routes: Routes = [
 
-    // reititys esimerkkejä, näkyy todellisuudessa tyylliin http(s)://aaa.osoite.bbb(:0000)/hello,
-    // eli vaikka nyt http://localhost:4200/hello
-    {
-      path: 'hello', component: HelloWorldComponent,
-      title: 'terve terve universumi!'
-    },
-    {
-      path: 'calculator', component: CalcComponent,
-      title: 'Calculator'
+  // reititys esimerkkejä, näkyy todellisuudessa tyylliin http(s)://aaa.osoite.bbb(:0000)/hello,
+  // eli vaikka nyt http://localhost:4200/hello
+  {
+    path: 'hello', component: HelloWorldComponent,
+    title: 'terve terve universumi!'
+  },
 
-    },
-    { path: 'testing-area', component: TestingComponent,
-      title: 'Testausta je pelleilyä'
-    },
+  {
+    path: 'calculator', component: CalcComponent,
+    title: 'Calculator'
+  },
+  {
+    path: 'testing-area', component: TestingComponent,
+    title: 'Testausta je pelleilyä'
+  },
 
-     // esimerkki redirektauksesta, juuresta redirektaus  'hello' komponenttiin.
-    { path: '', redirectTo: 'hello', pathMatch: 'full' },
+  // esimerkki redirektauksesta, juuresta redirektaus  'hello' komponenttiin.
+  {path: '', redirectTo: 'hello', pathMatch: 'full'},
 
-    // esimerkki siitä jos yritetään hakea osoitetta/sivua/komponenttia jota ei ole
-    // oltava viimeisenä jos oikein muistan
-    {
-      path: '**', component: PageNotFoundComponent,
-      title: '404-error koitatko häxöröidä jotain?'
-    }
+  // esimerkki siitä jos yritetään hakea osoitetta/sivua/komponenttia jota ei ole
+  // oltava viimeisenä jos oikein muistan
+  {
+    path: '**', component: PageNotFoundComponent,
+    title: '404-error koitatko häxöröidä jotain?'
+  }
 ];

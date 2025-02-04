@@ -28,9 +28,10 @@ export class ToolbarComponent {
   }
 
 
+  // avaa laskin dialogin
   openCalcDialog() {
     const dialogRef = this.dialog.open(CalcComponent, {
-      panelClass: 'custom-dialog-container',
+      hasBackdrop: false, // Taustaelementti (backdrop) poistetaan, jolloin tausta pysyy klikattavana
       disableClose: true, // estä käyttäjää sulkemasta dialogia ulkopuolisella klikkauksella
     });
 

@@ -1,15 +1,21 @@
 /* Kun kompnentti laukaistaan dialogina, pitää ohittaa dialogin oletus muotoilu,
  jumitin tätä kohtaa noin 2-3 h etsien tietoa netistä ja kokeillen oli
- muuten todella turhauttavaa.. JA TÄMÄN ON JUMANKAUTA OLTAVA TÄSSÄ
- CSS TIEDOSTOSSA YLIMPÄNÄ!! MITEN NÄITÄ VOI TIETÄÄ?
+ muuten todella turhauttavaa.. MITEN NÄITÄ VOI TIETÄÄ?
  */
+::ng-deep .mat-mdc-dialog-content {
+  border-radius: 5px !important;
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  border-radius: 5px !important;
+}
 
 /* Kortin (laskimen päätausta) perusmuotoilu */
 .calc-card {
   display: flex;
   flex-direction: column; /* Sisällön pystysuuntainen järjestys */
   width: 400px;
-  height: 650px;
+  height: 615px;
   padding: 10px;
   box-sizing: border-box;
   border: solid 1px #ccc;
@@ -25,11 +31,6 @@
   0 2px 2px 0 rgb(99, 140, 157),
   0 1px 5px 0 rgb(99, 140, 157);
 }
-
-::ng-deep .mat-mdc-dialog-surface {
-  border-radius: 5px !important;
-}
-
 
 /* Kortin (laskimen päätausta) korostus aktiivisena */
 .calc-card:active {

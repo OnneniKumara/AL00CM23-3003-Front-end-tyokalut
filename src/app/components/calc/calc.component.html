@@ -6,7 +6,7 @@
   class="calc-card"
 >
 
-
+  <!-- 'vetokahva/dragbar' -->
   <div cdkDragHandle
        class="drag-bar-cdk-drag-handle"
   >
@@ -48,7 +48,7 @@
       <mat-card-header>
 
         <!-- tulos -->
-        <mat-card-title>= {{result}}</mat-card-title>
+        <mat-card-title>= {{ result }}</mat-card-title>
       </mat-card-header>
     </mat-card>
 
@@ -56,7 +56,7 @@
       <mat-card-header>
 
         <!-- edellinen tulos -->
-        <mat-card-title>prev result  = {{previous}}</mat-card-title>
+        <mat-card-title>prev result = {{ previous }}</mat-card-title>
       </mat-card-header>
     </mat-card>
 
@@ -64,7 +64,7 @@
       <mat-card-header>
 
         <!-- muistiin laittaminen -->
-        <mat-card-title>MemSto: {{memSto}}</mat-card-title>
+        <mat-card-title>MemSto: {{ memSto }}</mat-card-title>
       </mat-card-header>
     </mat-card>
 
@@ -73,25 +73,34 @@
         <mat-card-title>notices:</mat-card-title>
 
         <!-- ilmoitukset -->
-        <mat-card-subtitle>{{notices}}</mat-card-subtitle>
+        <mat-card-subtitle>{{ notices }}</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
 
     <mat-grid-list cols="4" rowHeight="40px">
       <!-- napit for loopilla -->
-  <mat-grid-tile
-    *ngFor="let button of buttons">
-    <button
-      (click)="addValue(button)"
-      class="calc-buttons"
-      mat-stroked-button>
-      {{ button }}
-    </button>
-  </mat-grid-tile>
-</mat-grid-list>
+      <mat-grid-tile
+        *ngFor="let button of buttons">
+        <button
+          (click)="addValue(button)"
+          class="calc-buttons"
+          mat-stroked-button>
+          {{ button }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
 
   </mat-card-content>
 </mat-card>
 
-<!-- jos laskin ei ole aktiivinen eikä dialogissa, ei näytetä mitään -->
-<div *ngif="!active && !isInDialog()"></div>
+<!-- jos laskin ei ole aktiivinen eikä dialogissa, näytetään vain 'palautusnappi' -->
+<div *ngIf="!active && !isInDialog()">
+  <button
+    (click)="active = true"
+    *ngIf="!active"
+    mat-raised-button>
+
+    palauta laskin
+
+  </button>
+</div>
