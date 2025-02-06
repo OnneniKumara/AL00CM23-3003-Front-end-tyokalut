@@ -1,8 +1,8 @@
 import {Routes} from '@angular/router';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {HelloWorldComponent} from './hello-world/hello-world.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {HelloWorldComponent} from './components/hello-world/hello-world.component';
 import {CalcComponent} from './components/calc/calc.component';
-import {TestingComponent} from './testing/testing.component';
+import {TestingComponent} from './components/testing/testing.component';
 
 export const routes: Routes = [
 

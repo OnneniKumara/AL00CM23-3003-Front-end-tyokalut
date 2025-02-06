@@ -4,7 +4,7 @@ import {MatToolbar} from '@angular/material/toolbar';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton} from '@angular/material/button';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
-import {CalcComponent} from '../components/calc/calc.component';
+import {CalcComponent} from '../calc/calc.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 

@@ -32,49 +32,42 @@
     </button>
       </span>
   </div>
+
   <!-- laskimen kortin sisältö -->
   <mat-card-content>
 
 
-    <mat-card class="calc-card-calAndRes" appearance="outlined">
-      <mat-card-header>
-        <!-- laskutoimitus -->
-        <mat-card-title>{{ calculation }}</mat-card-title>
-      </mat-card-header>
+    <mat-card appearance="outlined"
+              class="calc-card-calAndRes">
+
+      <!-- laskutoimitus -->
+      <mat-card-title>{{ calculation }}</mat-card-title>
+
     </mat-card>
 
+    <mat-card appearance="outlined"
+              class="calc-card-calAndRes">
 
-    <mat-card class="calc-card-calAndRes" appearance="outlined">
-      <mat-card-header>
-
-        <!-- tulos -->
-        <mat-card-title>= {{ result }}</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-
-    <mat-card class="calc-card-memAndNotice" appearance="outlined">
-      <mat-card-header>
-
-        <!-- edellinen tulos -->
-        <mat-card-title>prev result = {{ previous }}</mat-card-title>
-      </mat-card-header>
+      <!-- tulos -->
+      <mat-card-title>= {{ result }}</mat-card-title>
     </mat-card>
 
     <mat-card class="calc-card-memAndNotice" appearance="outlined">
-      <mat-card-header>
 
-        <!-- muistiin laittaminen -->
-        <mat-card-title>MemSto: {{ memSto }}</mat-card-title>
-      </mat-card-header>
+      <!-- edellinen tulos -->
+      <mat-card-title>ed. tulos: {{ previous }}</mat-card-title>
     </mat-card>
 
     <mat-card class="calc-card-memAndNotice" appearance="outlined">
-      <mat-card-header>
-        <mat-card-title>notices:</mat-card-title>
 
-        <!-- ilmoitukset -->
-        <mat-card-subtitle>{{ notices }}</mat-card-subtitle>
-      </mat-card-header>
+      <!-- muistiin laittaminen -->
+      <mat-card-title>MemSto: {{ memSto }}</mat-card-title>
+    </mat-card>
+
+    <mat-card class="calc-card-memAndNotice" appearance="outlined">
+
+      <!-- ilmoitukset -->
+      <mat-card-title>ilmoitukset: {{ notices }}</mat-card-title>
     </mat-card>
 
     <mat-grid-list cols="4" rowHeight="40px">
