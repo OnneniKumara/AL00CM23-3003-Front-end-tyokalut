@@ -3,19 +3,19 @@
 <h3>
   {{ title }}
 </h3>
-<button mat-flat-button (click)="narusPeppi()">{{perusNappi}}</button> <-- klikkaa mua!
+<button (click)="narusPeppi()" mat-flat-button>{{ perusNappi }}</button> <-- klikkaa mua!
 <br>
-<button mat-flat-button disabled>{{perusNappi}} ei käytössä!</button>
+<button disabled mat-flat-button>{{ perusNappi }} ei käytössä!</button>
 <br>
 <mat-slider min="1" max="5" step="0.5">
   <input matSliderThumb value="1.5">
 </mat-slider>
 <br>
-{{nappi_teksti}}
+{{ nappi_teksti }}
 <button mat-flat-button (click)="onButtonClicked()">vaihda/palauta oletusarvo</button>
 <br>
 <br>
-<input [(ngModel)]="etuNimi" />
+<input [(ngModel)]="etuNimi"/>
 <button mat-flat-button (click)="napinPainallus()">vaihda/palauta nimi</button>
 
 <!--toisen komponentin tuominen -->

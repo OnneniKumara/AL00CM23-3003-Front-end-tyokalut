@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {ToolbarComponent} from './toolbar/toolbar.component';
+import {ToolbarComponent} from './components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +10,4 @@ import {ToolbarComponent} from './toolbar/toolbar.component';
 })
 export class AppComponent {
   title = 'angular_projekti';
-  jeppulisjee = 'onpa siistiä!';
-
-  // aktiivisen reitin otsikko
-  activeTitle:string = ''
-
-  // funktio jolla aktiivisen reitin otsikko asetetaan
-  setActiveRouteTitle()
-  {
-
-  }
 }
