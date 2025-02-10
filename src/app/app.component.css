@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  justify-content: center;
+  max-width: 1920px;
+  width: 100%;
+  margin: auto;
+  background-color: #252a2c;
+  min-height: 100dvh;
+  padding-top: 50px;
+}

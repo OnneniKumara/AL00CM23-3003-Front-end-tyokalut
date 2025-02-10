@@ -1,0 +1,53 @@
+
+.admin-h2 {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.slider-admin-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+
+.margin {
+  margin: 8px;
+}
+
+.example-width {
+  max-width: 180px;
+  width: 100%;
+}
+
+.mat-mdc-slider {
+  max-width: 300px;
+  width: 100%;
+}
+
+.mat-mdc-card + .mat-mdc-card {
+  margin-top: 8px;
+}
+
+.result-card h2, h3, h4 {
+  margin: 0 8px;
+  color: rgb(173, 230, 223);
+}
+
+.label-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px 0;
+  max-width: 284px;
+}
+
+.name-label {
+  font-weight: 600;
+  color: rgb(173, 230, 223);
+}
+
+.result-card .value-label {
+  font-weight: 600;
+  color: rgb(173, 230, 223);
+}
