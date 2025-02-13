@@ -4,6 +4,7 @@ import {HelloWorldComponent} from './components/hello-world/hello-world.componen
 import {CalcComponent} from './components/calc/calc.component';
 import {TestingComponent} from './components/testing/testing.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';
+import {ReactiveFormComponent} from './components/reactive-form/reactive-form.component';
 
 export const routes: Routes = [
 
@@ -28,6 +29,12 @@ export const routes: Routes = [
   {
     path: 'feedback',
     component: FeedbackComponent,
+    title: 'Palautesivu'
+  },
+
+  {
+    path: 'reactive-form',
+    component: ReactiveFormComponent,
     title: 'Palautesivu'
   },
 

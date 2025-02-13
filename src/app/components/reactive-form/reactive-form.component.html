@@ -1,0 +1,63 @@
+<div class="form wrapper">
+
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="registerForm"
+    class="form wrapper">
+
+    <h1>Rekisteröidy</h1>
+
+    <!-- tehdään *ngFor:lla kentät, välttyy toistaminen käsin -->
+    <ng-container *ngFor="let field of fields">
+      <mat-form-field>
+        <mat-label>{{ field.label }}</mat-label>
+
+        <input
+          [attr.type]="
+          field.name === 'password'
+            ? visibilityOnOff()
+            ? 'password'
+            : 'text'
+            : field.type"
+          formControlName="{{ field.name }}"
+          matInput
+          name="{{ field.name }}"
+          placeholder="{{ field.placeholder }}"
+        >
+        <!-- sallitaan napin käyttö vasta salasanan jälkeen -->
+        <button
+          (click)="onClick($event)"
+          *ngIf="field.name === 'password'"
+          mat-icon-button
+          matSuffix
+          type="button"
+        >
+          <mat-icon>{{
+              visibilityOnOff() ? "visibility" : "visibility_off"
+            }}
+          </mat-icon>
+        </button>
+      </mat-form-field>
+    </ng-container>
+    <div class="terms-container">
+      <mat-checkbox
+        formControlName="terms"
+        labelPosition="after"
+        name="terms"
+      >
+        <a (click)="terms()" class="link">Käyttöehdot</a>
+        <mat-error *ngIf="!terms?.value">Sinun on hyväksyttävä käyttöehdot jatkaaksesi</mat-error>
+      </mat-checkbox>
+    </div>
+    <div class="action-button">
+      <button
+        [disabled]="!registerForm.valid"
+        color="primary"
+        mat-raised-button
+        type="submit"
+      >
+        Rekisteröidy
+      </button>
+    </div>
+  </form>
+</div>
