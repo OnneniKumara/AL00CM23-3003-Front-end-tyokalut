@@ -5,6 +5,7 @@ import {CalcComponent} from './components/calc/calc.component';
 import {TestingComponent} from './components/testing/testing.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';
 import {ReactiveFormComponent} from './components/reactive-form/reactive-form.component';
+import {FrontpageComponent} from './components/frontpage/frontpage.component';
 
 export const routes: Routes = [
 
@@ -31,17 +32,22 @@ export const routes: Routes = [
     component: FeedbackComponent,
     title: 'Palautesivu'
   },
-
   {
     path: 'reactive-form',
     component: ReactiveFormComponent,
-    title: 'Palautesivu'
+    title: 'Reaktiivinen lomake'
+  },
+  {
+    path: 'frontpage',
+    component: FrontpageComponent,
+    title: 'Etusivu'
   },
 
-  // esimerkki redirektauksesta, juuresta redirektaus  'hello' komponenttiin.
+
+  // esimerkki redirektauksesta.
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: '/frontpage',
     pathMatch: 'full'
   },
 

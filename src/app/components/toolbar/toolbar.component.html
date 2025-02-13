@@ -12,7 +12,11 @@
 
 <mat-menu #menu="matMenu">
 
-  <!-- Elementit jotka menusta voi laukaista-->
+    <!--
+    Elementit jotka menusta voi laukaista,
+    Kaikki ikonit etsitty täältä:
+    https://jossef.github.io/material-design-icons-iconfont/
+    -->
 
   <button (click)="openCalcDialog()"
           mat-menu-item
@@ -40,10 +44,10 @@
     <mat-icon>feedback</mat-icon>
     <span>Palautesivu</span>
   </button>
-  <button [routerLink]="'/feedback'"
+    <button [routerLink]="'/reactive-form'"
           mat-menu-item
           routerLinkActive="active">
-    <mat-icon>feedback</mat-icon>
+        <mat-icon>dynamic_form</mat-icon>
     <span>Reaktiivinen lomake</span>
   </button>
 

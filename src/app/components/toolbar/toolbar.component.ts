@@ -7,10 +7,10 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {CalcComponent} from '../calc/calc.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
-
 @Component({
   selector: 'app-toolbar',
-  imports: [RouterLink,
+  imports: [
+    RouterLink,
     RouterLinkActive,
     MatToolbar,
     MatIcon,
@@ -18,7 +18,8 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
-    MatDialogModule],
+    MatDialogModule,
+  ],
 
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css'
