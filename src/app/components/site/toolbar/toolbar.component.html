@@ -46,13 +46,6 @@
     <span>Etusivu</span>
   </button>
 
-  <button (click)="openCalcDialog()"
-          mat-menu-item
-          routerLinkActive="active">
-    <mat-icon>calculate</mat-icon>
-    <span>Laskin</span>
-  </button>
-
   <button [routerLink]="'/hello'"
           mat-menu-item
           routerLinkActive="active">
@@ -60,23 +53,32 @@
     <span>Hello Universe!</span>
   </button>
 
-  <button [routerLink]="'/testing-area'"
+  <button (click)="openCalcDialog()"
           mat-menu-item
           routerLinkActive="active">
-    <mat-icon>tips_and_updates</mat-icon>
-    <span>Testaus-'areena'</span>
+    <mat-icon>calculate</mat-icon>
+    <span>Laskin</span>
   </button>
+
   <button [routerLink]="'/feedback'"
           mat-menu-item
           routerLinkActive="active">
     <mat-icon>feedback</mat-icon>
     <span>Palautesivu</span>
   </button>
-    <button [routerLink]="'/reactive-form'"
+
+  <button [routerLink]="'/reactive-form'"
           mat-menu-item
           routerLinkActive="active">
         <mat-icon>dynamic_form</mat-icon>
     <span>Reaktiivinen lomake</span>
+  </button>
+
+  <button [routerLink]="'/testing-area'"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>tips_and_updates</mat-icon>
+    <span>Testaus-'areena'</span>
   </button>
 
 </mat-menu>

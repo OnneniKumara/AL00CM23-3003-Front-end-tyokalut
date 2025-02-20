@@ -9,40 +9,36 @@ import {FrontpageComponent} from './components/site/frontpage/frontpage.componen
 
 export const routes: Routes = [
 
-  // reititys esimerkkejä, näkyy todellisuudessa tyylliin http(s)://aaa.osoite.bbb(:0000)/hello,
-  // eli vaikka nyt http://localhost:4200/hello
   {
     path: 'hello',
     component: HelloWorldComponent,
-    title: 'Terve terve universumi!'
+    data: {title: 'Heippa universumi!'}
   },
   {
     path: 'calculator',
     component: CalcComponent,
-    title: 'Laskin'
+    data: {title: 'Laskin'}
   },
   {
     path: 'testing-area',
     component: TestingComponent,
-    title: 'Testausta je pelleilyä'
+    data: {title: 'Testausta'}
   },
-
   {
     path: 'feedback',
     component: FeedbackComponent,
-    title: 'Palautesivu'
+    data: {title: 'Palautesivu'}
   },
   {
     path: 'reactive-form',
     component: ReactiveFormComponent,
-    title: 'Reaktiivinen lomake'
+    data: {title: 'Reaktiivinen lomake'}
   },
   {
     path: 'frontpage',
     component: FrontpageComponent,
-    title: 'Etusivu'
+    data: {title: 'Etusivu'}
   },
-
 
   // esimerkki redirektauksesta.
   {
@@ -56,6 +52,6 @@ export const routes: Routes = [
   {
     path: '**',
     component: PageNotFoundComponent,
-    title: '404-error koitatko häxöröidä jotain?'
+    data: {title: '404-error koitatko häxöröidä jotain?'}
   }
 ];
