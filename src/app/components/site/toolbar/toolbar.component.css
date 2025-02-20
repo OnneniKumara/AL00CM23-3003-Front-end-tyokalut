@@ -1,0 +1,45 @@
+.active {
+  background-color: #638c9d;
+  box-shadow: 0 0 10px #ade6df
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 25vh;
+}
+
+.left1 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.left2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vh;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 25vh;
+}

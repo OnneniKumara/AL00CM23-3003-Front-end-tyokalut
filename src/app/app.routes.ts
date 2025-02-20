@@ -1,48 +1,44 @@
 import {Routes} from '@angular/router';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {HelloWorldComponent} from './components/hello-world/hello-world.component';
-import {CalcComponent} from './components/calc/calc.component';
-import {TestingComponent} from './components/testing/testing.component';
-import {FeedbackComponent} from './components/feedback/feedback.component';
-import {ReactiveFormComponent} from './components/reactive-form/reactive-form.component';
-import {FrontpageComponent} from './components/frontpage/frontpage.component';
+import {PageNotFoundComponent} from './components/site/page-not-found/page-not-found.component';
+import {HelloWorldComponent} from './components/tasks/hello-world/hello-world.component';
+import {CalcComponent} from './components/tasks/calc/calc.component';
+import {TestingComponent} from './components/temp/testing/testing.component';
+import {FeedbackComponent} from './components/tasks/feedback/feedback.component';
+import {ReactiveFormComponent} from './components/tasks/reactive-form/reactive-form.component';
+import {FrontpageComponent} from './components/site/frontpage/frontpage.component';
 
 export const routes: Routes = [
 
-  // reititys esimerkkejä, näkyy todellisuudessa tyylliin http(s)://aaa.osoite.bbb(:0000)/hello,
-  // eli vaikka nyt http://localhost:4200/hello
   {
     path: 'hello',
     component: HelloWorldComponent,
-    title: 'Terve terve universumi!'
+    data: {title: 'Heippa universumi!'}
   },
   {
     path: 'calculator',
     component: CalcComponent,
-    title: 'Laskin'
+    data: {title: 'Laskin'}
   },
   {
     path: 'testing-area',
     component: TestingComponent,
-    title: 'Testausta je pelleilyä'
+    data: {title: 'Testausta'}
   },
-
   {
     path: 'feedback',
     component: FeedbackComponent,
-    title: 'Palautesivu'
+    data: {title: 'Palautesivu'}
   },
   {
     path: 'reactive-form',
     component: ReactiveFormComponent,
-    title: 'Reaktiivinen lomake'
+    data: {title: 'Reaktiivinen lomake'}
   },
   {
     path: 'frontpage',
     component: FrontpageComponent,
-    title: 'Etusivu'
+    data: {title: 'Etusivu'}
   },
-
 
   // esimerkki redirektauksesta.
   {
@@ -56,6 +52,6 @@ export const routes: Routes = [
   {
     path: '**',
     component: PageNotFoundComponent,
-    title: '404-error koitatko häxöröidä jotain?'
+    data: {title: '404-error koitatko häxöröidä jotain?'}
   }
 ];

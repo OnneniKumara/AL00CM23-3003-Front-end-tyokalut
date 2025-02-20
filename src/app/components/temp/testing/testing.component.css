@@ -1,0 +1,17 @@
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+  color: var(--mat-sys-on-background);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50vh;
+}
+
+hr {
+  width: 60vh;
+  border: 1px solid var(--mat-sys-on-background);
+}

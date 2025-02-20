@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {pwdValidator} from './pwd-validator';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {PopUpDialogComponent} from '../pop-up-dialog/pop-up-dialog.component';
+import {PopUpDialogComponent} from '../../helpers/pop-up-dialog/pop-up-dialog.component';
 
 @Component({
   selector: 'reactive-form',

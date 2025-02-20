@@ -12,5 +12,5 @@ import {NgOptimizedImage} from '@angular/common';
   styleUrl: './hello-world.component.css'
 })
 export class HelloWorldComponent {
-  title = 'AL00CM23-3003-Front-end-tyokalut - Hello World komponentti';
+  title = 'Hello World komponentti';
 }
