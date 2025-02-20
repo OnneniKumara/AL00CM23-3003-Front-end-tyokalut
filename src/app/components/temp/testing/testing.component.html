@@ -1,30 +1,90 @@
+
 <div class="container">
-<h1>Testing!</h1>
+
+  <h1>Testing!</h1>
   <hr>
 <h3>
   {{ title }}
 </h3>
-  <hr>
-<button (click)="narusPeppi()" mat-flat-button>{{ perusNappi }}</button> <-- klikkaa mua!
-<br>
-<button disabled mat-flat-button>{{ perusNappi }} ei käytössä!</button>
 
   <hr>
-<mat-slider min="1" max="5" step="0.5">
-  <input matSliderThumb value="1.5">
+  <h5>Napin tekstin vaihtaminen klikkaamisesta</h5>
+  <button
+    (click)="narusPeppi()"
+    mat-flat-button
+  >
+    {{ perusNappi }}
+  </button>
+
+  <hr>
+  <h6>Käytöstä poistettu nappi</h6>
+  <button
+    disabled mat-flat-button
+  >
+    {{ perusNappi }} ei käytössä!
+  </button>
+
+  <hr>
+  <h5>Sliderin ja sen arvon muuttaminen</h5>
+  <mat-slider
+    max="5"
+    min="0"
+    step="1">
+    <input
+      (ngModelChange)="sliderinArvo = $event"
+      [ngModel]="sliderinArvo"
+      matSliderThumb>
 </mat-slider>
+  <p>Arvo: {{ sliderinArvo }}</p>
+
   <hr>
-{{ nappi_teksti }}
-<button mat-flat-button (click)="onButtonClicked()">vaihda/palauta oletusarvo</button>
+  <h5>Arvon muuttaminen napin painalluksella</h5>
+  <p>Arvo: {{ nappi_teksti }}</p>
+  <button
+    (click)="onButtonClicked()"
+    mat-flat-button
+  >
+    vaihda/palauta oletusarvo
+  </button>
+
   <hr>
-<input [(ngModel)]="etuNimi"/>
-  <br>
-  <button (click)="napinPainallus()" mat-flat-button>vaihda/palauta nimi</button>
+  <h5> Palauta oletusarvo </h5>
+  <mat-form-field>
+    <input
+      [(ngModel)]="etuNimi"
+      matInput
+      placeholder="Anna etunimi"
+    />
+  </mat-form-field>
+
+  <button
+    (click)="napinPainallus()"
+    mat-flat-button
+  >vaihda/palauta nimi
+  </button>
+
   <hr>
 <!--toisen komponentin tuominen -->
-<br>
 <br>
   <h4>Toisen komponentin tuominen (app-calc)</h4>
   <br>
 <app-calc></app-calc>
+
+  <hr>
+  <h4>Laukaise dialogi viestillä</h4>
+  <mat-form-field>
+    <input
+      [(ngModel)]="dialogiViesti"
+      matInput
+      placeholder="Dialogin viesti"
+    />
+  </mat-form-field>
+  <button
+    (click)="openDialog(dialogiViesti)"
+    mat-flat-button
+  >
+    Avaa dialogi
+  </button>
+  <hr>
+
 </div>

@@ -25,9 +25,12 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
   styleUrl: './toolbar.component.css'
 })
 export class ToolbarComponent {
+
   constructor(private dialog: MatDialog) {
   }
 
+  // Title arvo routerLinkillä
+  public title = 'Tähän otsikko routerilta';
 
   // avaa laskin dialogin
   openCalcDialog() {
