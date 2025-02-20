@@ -11,12 +11,18 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-
     <!--
     Elementit jotka menusta voi laukaista,
     Kaikki ikonit etsitty täältä:
     https://jossef.github.io/material-design-icons-iconfont/
     -->
+
+  <button [routerLink]="''"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>home</mat-icon>
+    <span>Etusivu</span>
+  </button>
 
   <button (click)="openCalcDialog()"
           mat-menu-item

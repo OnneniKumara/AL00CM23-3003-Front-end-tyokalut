@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {CalcComponent} from '../calc/calc.component';
+import {CalcComponent} from '../../tasks/calc/calc.component';
 import {FormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MatSlider, MatSliderThumb} from '@angular/material/slider';

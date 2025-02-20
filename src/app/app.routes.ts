@@ -1,11 +1,11 @@
 import {Routes} from '@angular/router';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {HelloWorldComponent} from './components/hello-world/hello-world.component';
-import {CalcComponent} from './components/calc/calc.component';
-import {TestingComponent} from './components/testing/testing.component';
-import {FeedbackComponent} from './components/feedback/feedback.component';
-import {ReactiveFormComponent} from './components/reactive-form/reactive-form.component';
-import {FrontpageComponent} from './components/frontpage/frontpage.component';
+import {PageNotFoundComponent} from './components/site/page-not-found/page-not-found.component';
+import {HelloWorldComponent} from './components/tasks/hello-world/hello-world.component';
+import {CalcComponent} from './components/tasks/calc/calc.component';
+import {TestingComponent} from './components/temp/testing/testing.component';
+import {FeedbackComponent} from './components/tasks/feedback/feedback.component';
+import {ReactiveFormComponent} from './components/tasks/reactive-form/reactive-form.component';
+import {FrontpageComponent} from './components/site/frontpage/frontpage.component';
 
 export const routes: Routes = [
 
