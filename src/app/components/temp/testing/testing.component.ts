@@ -21,7 +21,7 @@ export class TestingComponent {
   @ViewChild(CalcComponent) calcComponent!: CalcComponent;
 
 
-  title = 'AL00CM23-3003-Front-end-tyokalut - omia testejä ja muuta schaisseea';
+  title = 'Omia testejä ja muuta epäkuranttia koodia.';
 
   nappi_teksti = 'oletusteksti'
 
