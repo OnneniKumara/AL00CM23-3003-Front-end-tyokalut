@@ -88,6 +88,130 @@
     </mat-card>
     <hr>
 
+    <!-- Lainan hakeminen -->
+    <div class="joku">
+      <form
+        #loanForm="ngForm"
+        (ngSubmit)="loanService.sendLoanApplication(loanApplication)">
+
+        <h1 class="title">Täytä henkilötiedot</h1>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Etunimi</mat-label>
+            <input
+              #firstname="ngModel"
+              [(ngModel)]="loanApplication.firstName"
+              matInput
+              minlength="2"
+              name="firstname"
+              ngModel
+              pattern="^[a-öA-Ö]*$"
+              placeholder="Nimesi"
+              required/>
+            <mat-error
+              *ngIf="firstname.hasError(
+          'required')"
+            >Syötä etunimesi
+            </mat-error>
+            <mat-error
+              *ngIf="firstname.hasError(
+          'minlength')"
+            >Minimipituus 2 merkkiä
+            </mat-error>
+            <mat-error
+              *ngIf="firstname.hasError(
+          'pattern')"
+            >Syötä vain kirjaimia
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Sukunimi</mat-label>
+            <input
+              #lastname="ngModel" [(ngModel)]="loanApplication.lastName"
+              matInput
+              minlength="2"
+              name="lastname"
+              ngModel
+              pattern="^[a-zA-Z]*$" placeholder="Sukunimesi"
+              required/>
+            <mat-error
+              *ngIf="lastname.hasError(
+          'required')"
+            >Syötä sukunimesi
+            </mat-error>
+            <mat-error
+              *ngIf="lastname.hasError(
+          'minlength')"
+            >Syötä vähintään kaksi merkkiä
+            </mat-error>
+            <mat-error
+              *ngIf="lastname.hasError(
+          'pattern')"
+            >Syötä vain kirjaimia
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Sähköposti</mat-label>
+            <input
+              #email="ngModel"
+              [(ngModel)]="loanApplication.email"
+              matInput
+              name="email"
+              ngModel
+              pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" placeholder="erkki@esimerk.ki"
+              required
+              type="email"/>
+            <mat-error
+              *ngIf="email.hasError(
+          'required')"
+            >Syötä sähköpostisi
+            </mat-error>
+            <mat-error
+              *ngIf="email.hasError(
+          'pattern')"
+            >Epäkelpo sähköpostiosoite
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="inputfield">
+          <mat-checkbox
+            #tickChecked="ngModel"
+            [(ngModel)]="isTickChecked" name="accept"
+            required
+          >Hyväksy käyttöehdot
+          </mat-checkbox>
+          <mat-error
+            *ngIf="tickChecked.hasError(
+        'required')
+        && tickChecked.dirty"
+          >Hyväksy käyttöehdot
+          </mat-error>
+        </div>
+        <div class="gap-1 row">
+          <button
+            [disabled]="loanForm.invalid"
+            mat-raised-button
+            type="submit"
+          >Rekisteröidy
+          </button>
+          <button
+            (click)="cancel()"
+            color="warn"
+            mat-flat-button type="button">
+            Sulje
+          </button>
+        </div>
+      </form>
+    </div>
   </mat-card-content>
 </mat-card>
 
