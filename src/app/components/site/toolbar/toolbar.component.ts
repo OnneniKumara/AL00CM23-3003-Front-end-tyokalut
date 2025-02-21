@@ -8,6 +8,7 @@ import {CalcComponent} from '../../tasks/calc/calc.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {Title} from '@angular/platform-browser';
 import {filter} from 'rxjs';
+import {LoanCalculatorComponent} from '../../tasks/course-exam/loan-calculator/loan-calculator.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -71,4 +72,14 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
+  openLoanCalcDialog() {
+    const dialogRef = this.dialog.open(LoanCalculatorComponent, {
+      hasBackdrop: false,
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Lainalaskuri dialogi suljettiin');
+    });
+  }
 }

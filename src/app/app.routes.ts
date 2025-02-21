@@ -9,6 +9,7 @@ import {FrontpageComponent} from './components/site/frontpage/frontpage.componen
 import {
   TemplateFormValidationComponent
 } from './components/tasks/template-form-validation/template-form-validation.component';
+import {LoanCalculatorComponent} from './components/tasks/course-exam/loan-calculator/loan-calculator.component';
 
 export const routes: Routes = [
 
@@ -47,7 +48,11 @@ export const routes: Routes = [
     component: TemplateFormValidationComponent,
     data: {title: 'Lomakkeen validointi - malli/templatepohjainen'}
   },
-
+  {
+    path: 'loan-calculator',
+    component: LoanCalculatorComponent,
+    data: {title: 'Kurssin tentti - lainalaskuri'}
+  },
   // esimerkki redirektauksesta.
   {
     path: '',

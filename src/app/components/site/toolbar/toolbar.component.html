@@ -81,6 +81,13 @@
     <span>Reaktiivinen lomake</span>
   </button>
 
+  <button (click)="openLoanCalcDialog()"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>attach_money</mat-icon>
+    <span>Tentti: Lainalaskuri</span>
+  </button>
+
   <button [routerLink]="'/testing-area'"
           mat-menu-item
           routerLinkActive="active">
