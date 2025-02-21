@@ -186,14 +186,16 @@ export class ReactiveFormComponent implements OnInit {
     console.log('Form submitted\n', this.registerForm.value);
 
     // ja vaikka servicen kautta dialogiin ilmoitus
-    this.popUpService.openDialog(
+    const dialogRef = this.popUpService.openDialog(
       'Rekisteröityminen onnistui!\n' +
       'sinut ohjataan etusivulle\n\n' +
       'lomakkeen tiedot:\n\n' +
       JSON.stringify(this.registerForm.value, null, '\t'));
 
     // ja sitten vaikka mennään etusivulle
-    this.cancel();
+    dialogRef.afterClosed().subscribe(() => {
+      this.cancel();
+    })
   }
 
   // mennään 'etusivulle'
