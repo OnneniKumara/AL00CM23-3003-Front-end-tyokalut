@@ -13,6 +13,7 @@ import {ExamLoanApplicationService} from '../services/exam-loan-application.serv
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
+import {PopUpService} from '../../../../services/pop-up.service';
 
 @Component({
   selector: 'app-loan-calculator',
@@ -54,6 +55,9 @@ export class LoanCalculatorComponent {
   // injektoidaan lainahakemuspalvelu
   protected loanService = inject(ExamLoanApplicationService);
 
+  // PopUpService käyttöön
+  private popUpService = inject(PopUpService);
+
   // lainahakemus
   loanApplication: ExamLoanApplication = new ExamLoanApplication();
 
@@ -78,6 +82,35 @@ export class LoanCalculatorComponent {
     else if (this.router.url !== '/loan-calculator') {
       this.active = false;
     }
+  }
+
+  onSubmit(loanApplication: ExamLoanApplication) {
+
+    // tallennetaan lainahakemus kukten pyydettiin tehtävänannossa
+    this.loanService.sendLoanApplication(loanApplication);
+
+    // laitetaan nyt vaikka lisäksi konsoliin lokia
+    console.log('Form submitted\n', this.loanApplication);
+
+    // ja vaikka servicen kautta dialogiin ilmoitus  ja lomakkeen tiedot jsonina
+    const dialogRef = this.popUpService.openDialog(
+      'Rekisteröityminen onnistui!\n' +
+      'sinut ohjataan etusivulle\n\n' +
+      'lomakkeen tiedot:\n\n' +
+      JSON.stringify(this.loanApplication, null, '\t'));
+
+    // ja sitten vaikka mennään etusivulle
+    dialogRef.afterClosed().subscribe(() => {
+      this.onClose();
+      this.cancel();
+    })
+
+
+  }
+
+  // mennään 'etusivulle'
+  cancel() {
+    this.router.navigate(['']);
   }
 
 }

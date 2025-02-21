@@ -92,7 +92,8 @@
     <div class="joku">
       <form
         #loanForm="ngForm"
-        (ngSubmit)="loanService.sendLoanApplication(loanApplication)">
+        (ngSubmit)="onSubmit(loanApplication)">
+        <!--(ngSubmit)="loanService.sendLoanApplication(loanApplication)"> -->
 
         <h1 class="title">Täytä henkilötiedot</h1>
 
@@ -246,6 +247,8 @@
           </mat-form-field>
         </div>
 
+        <hr>
+
         <div class="inputfield">
           <mat-checkbox
             #tickChecked="ngModel"
@@ -262,6 +265,7 @@
         </div>
         <div class="gap-1 row">
           <button
+            style="margin-top: 10px; width: 40%; margin: auto;"
             [disabled]="loanForm.invalid"
             mat-raised-button
             type="submit"

@@ -16,7 +16,7 @@ css tiedoston ja muokkasin sitä lainalaskurin tarpeisiin.
 .calc-card {
   display: flex;
   flex-direction: column; /* Sisällön pystysuuntainen järjestys */
-  width: 400px;
+  width: 370px;
 
   padding: 10px;
   box-sizing: border-box;
@@ -120,7 +120,7 @@ css tiedoston ja muokkasin sitä lainalaskurin tarpeisiin.
 }
 
 hr {
-  width: 350px;
+  width: 320px;
   border: 1px solid white;
 }
 
