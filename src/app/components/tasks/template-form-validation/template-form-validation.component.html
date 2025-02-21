@@ -1,1 +1,222 @@
-<p>template-form-validation works!</p>
+<div class="wrapper column">
+
+  <form
+    #templateForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    class="wrapper column"
+  >
+    <h1 class="title">Rekisteröidy</h1>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Tunniste tietokannalta</mat-label>
+        <input
+          #id="ngModel"
+          [(ngModel)]="personalData.id"
+          disabled
+          matInput
+          name="id"
+          ngModel
+          placeholder="Tietokannan generoima id"
+          required/>
+        <mat-error *ngIf="id.hasError(
+        'required')"
+        >Tietokanta ei voinut antaa id:tä, ota yhteyttä ylläpitoon
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Käyttäjänimi</mat-label>
+        <input
+          #username="ngModel"
+          [(ngModel)]="personalData.username"
+          matInput
+          minlength="4"
+          name="username"
+          placeholder="user1234"
+          required/>
+        <mat-error
+          *ngIf="username.hasError(
+        'required')"
+        >Syötä käyttäjänimi
+        </mat-error>
+        <mat-error
+          *ngIf="username.hasError(
+          'minlength')"
+        >Minimipituus on neljä merkkiä
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Sähköposti</mat-label>
+        <input
+          #email="ngModel"
+          [(ngModel)]="personalData.email"
+          matInput
+          name="email"
+          ngModel
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" placeholder="erkki@esimerk.ki"
+          required
+          type="email"/>
+        <mat-error
+          *ngIf="email.hasError(
+          'required')"
+        >Syötä sähköpostisi
+        </mat-error>
+        <mat-error
+          *ngIf="email.hasError(
+          'pattern')"
+        >Epäkelpo sähköpostiosoite
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Etunimi</mat-label>
+        <input
+          #firstname="ngModel"
+          [(ngModel)]="personalData.firstname"
+          matInput
+          minlength="2"
+          name="firstname"
+          ngModel
+          pattern="^[a-öA-Ö]*$"
+          placeholder="Nimesi"
+          required/>
+        <mat-error
+          *ngIf="firstname.hasError(
+          'required')"
+        >Syötä etunimesi
+        </mat-error>
+        <mat-error
+          *ngIf="firstname.hasError(
+          'minlength')"
+        >Minimipituus 2 merkkiä
+        </mat-error>
+        <mat-error
+          *ngIf="firstname.hasError(
+          'pattern')"
+        >Syötä vain kirjaimia
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Sukunimi</mat-label>
+        <input
+          #lastname="ngModel" [(ngModel)]="personalData.lastname"
+          matInput
+          minlength="2"
+          name="lastname"
+          ngModel
+          pattern="^[a-zA-Z]*$" placeholder="Sukunimesi"
+          required/>
+        <mat-error
+          *ngIf="lastname.hasError(
+          'required')"
+        >Syötä sukunimesi
+        </mat-error>
+        <mat-error
+          *ngIf="lastname.hasError(
+          'minlength')"
+        >Syötä vähintään kaksi merkkiä
+        </mat-error>
+        <mat-error
+          *ngIf="lastname.hasError(
+          'pattern')"
+        >Syötä vain kirjaimia
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Salasana</mat-label>
+        <input
+          #password="ngModel"
+          [(ngModel)]="personalData.password"
+          matInput
+          minlength="8"
+          name="password"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+          placeholder="SalaSana123"
+          required
+          type="password"/>
+        <mat-error
+          *ngIf="password.hasError(
+        'required')"
+        >Syötä salasana
+        </mat-error>
+        <mat-error
+          *ngIf="password.hasError(
+          'minlength')"
+        >Minumum 8 characters required
+        </mat-error>
+        <mat-error
+          *ngIf="password.hasError(
+          'pattern')"
+        >Käytä isoja sekä pieniä kirjaimia että numeroita
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-form-field>
+        <mat-label>Vahvista salasana</mat-label>
+        <input
+          #confirmPassword="ngModel"
+          [(ngModel)]="personalData.confirmPassword"
+          matInput
+          minlength="10"
+          name="confirmPassword"
+          pattern="{{ password.value }}"
+          required type="password"/>
+        <mat-error
+          *ngIf="confirmPassword.hasError(
+          'required')"
+        >Vahvista salasana
+        </mat-error>
+        <mat-error
+          *ngIf="confirmPassword.hasError(
+          'pattern')"
+        >Salasanat eivät täsmää
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputfield">
+      <mat-checkbox
+        #tickChecked="ngModel"
+        [(ngModel)]="isTickChecked" name="accept"
+        required
+      >Hyväksy käyttöehdot
+      </mat-checkbox>
+      <mat-error
+        *ngIf="tickChecked.hasError(
+        'required')
+        && tickChecked.dirty"
+      >Hyväksy käyttöehdot
+      </mat-error>
+    </div>
+    <div class="gap-1 row">
+      <button
+        [disabled]="templateForm.invalid"
+        mat-raised-button
+        type="submit"
+      >Rekisteröidy
+      </button>
+      <button
+        (click)="cancel()"
+        color="warn"
+        mat-flat-button type="button">
+        Sulje
+      </button>
+    </div>
+  </form>
+</div>
