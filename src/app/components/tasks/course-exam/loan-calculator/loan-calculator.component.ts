@@ -64,6 +64,7 @@ export class LoanCalculatorComponent {
   }
 
   // funktio joka sulkee dialogin tai navigoi pääsivulle
+
   onClose() {
     if (this.router.url === '/loan-calculator') {
 
@@ -77,11 +78,6 @@ export class LoanCalculatorComponent {
     else if (this.router.url !== '/loan-calculator') {
       this.active = false;
     }
-  }
-
-  // mennään 'etusivulle'
-  cancel() {
-    this.router.navigate(['']);
   }
 
 }

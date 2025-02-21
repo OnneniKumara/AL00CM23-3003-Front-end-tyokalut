@@ -98,6 +98,40 @@
 
         <div class="inputfield">
           <mat-form-field>
+            <mat-label>Hetu</mat-label>
+            <input
+              #sosSecNumber="ngModel"
+              [(ngModel)]="loanApplication.sosSecNumber"
+              matInput
+              maxlength="11"
+              minlength="11"
+              name="sosSecNumber"
+              ngModel
+              pattern="^\d{6}-\d{4}$"
+              placeholder="Sosiaaliturvatunnus"
+              required/>
+
+
+            <mat-error
+              *ngIf="sosSecNumber.hasError(
+          'required')"
+            >Syötä Sosiaaliturvatunnuksesi
+            </mat-error>
+            <mat-error
+              *ngIf="sosSecNumber.hasError(
+          'minlength') && sosSecNumber.dirty"
+            >Pituus 11 merkkiä
+            </mat-error>
+            <mat-error
+              *ngIf="sosSecNumber.hasError(
+          'pattern')"
+            >Syötä muodossa ppkkvv-xxxx
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputfield">
+          <mat-form-field>
             <mat-label>Etunimi</mat-label>
             <input
               #firstname="ngModel"
@@ -165,7 +199,8 @@
               matInput
               name="email"
               ngModel
-              pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" placeholder="erkki@esimerk.ki"
+              pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+              placeholder="erkki@esimerk.ki"
               required
               type="email"/>
             <mat-error
@@ -181,13 +216,42 @@
           </mat-form-field>
         </div>
 
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Puhelinnumero</mat-label>
+            <input
+              #phoneNumber="ngModel"
+              [(ngModel)]="loanApplication.phoneNumber"
+              matInput
+              name="phoneNumber"
+              ngModel
+              pattern="^(\+358|0)(4[0-9]{1}|50|52|53|54|55|56|57|58|59|41|42|43|44|45|46|47|48|49)[0-9]{6,7}$"
+              placeholder="+358 40 123 4567"
+              required
+              type="phoneNumber"/>
+
+            <!--
+            puhelinnumeron regex täältä:
+            https://regex101.com/library/ffGtsW
+            -->
+
+            <mat-error *ngIf="phoneNumber.hasError(
+            'required')">Syötä puhelinnumerosi
+            </mat-error>
+            <mat-error
+              *ngIf="phoneNumber.hasError(
+          'pattern')"
+            >Syötä kelvollinen puhelinnumero
+            </mat-error>
+          </mat-form-field>
+        </div>
 
         <div class="inputfield">
           <mat-checkbox
             #tickChecked="ngModel"
             [(ngModel)]="isTickChecked" name="accept"
             required
-          >Hyväksy käyttöehdot
+          >Hyväksy lainaehdot.
           </mat-checkbox>
           <mat-error
             *ngIf="tickChecked.hasError(
@@ -202,12 +266,6 @@
             mat-raised-button
             type="submit"
           >Rekisteröidy
-          </button>
-          <button
-            (click)="cancel()"
-            color="warn"
-            mat-flat-button type="button">
-            Sulje
           </button>
         </div>
       </form>
@@ -226,4 +284,3 @@
 
   </button>
 </div>
-

@@ -16,7 +16,7 @@ export class ExamLoanApplicationService {
   sendLoanApplication(loanApplication: ExamLoanApplication) {
     this.loanApplications.push(loanApplication)
 
-    // konsoliin tulostus
+    // konsoliin tulostus sisällöstä
     console.log(loanApplication)
   }
 }

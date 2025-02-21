@@ -123,3 +123,8 @@ hr {
   width: 350px;
   border: 1px solid white;
 }
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+  color: var(--mat-sys-on-background);
+}
