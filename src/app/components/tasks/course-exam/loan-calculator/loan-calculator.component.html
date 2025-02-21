@@ -40,12 +40,16 @@
     <mat-card
       appearance="outlined"
       class="calc-card-calAndRes">
-      <mat-card-title>tähän lainan määrän arvo</mat-card-title>
+      <mat-card-title>Lainan määrä: {{ this.loanApplication.loanAmount }} €</mat-card-title>
     </mat-card>
 
     <mat-slider
+      [max]="10000"
+      [min]="500"
+      [step]="100"
       class="margin">
       <input
+        [(ngModel)]="loanApplication.loanAmount"
         matSliderThumb>
     </mat-slider>
 
@@ -53,12 +57,16 @@
     <mat-card
       appearance="outlined"
       class="calc-card-calAndRes">
-      <mat-card-title>tähän laina-aika</mat-card-title>
+      <mat-card-title>Laina-aika: {{ this.loanApplication.loanDuration }} vuotta.</mat-card-title>
     </mat-card>
 
     <mat-slider
+      [max]="10"
+      [min]="1"
+      [step]="1"
       class="margin">
       <input
+        [(ngModel)]="loanApplication.loanDuration"
         matSliderThumb>
     </mat-slider>
 
@@ -66,7 +74,17 @@
     <mat-card
       appearance="outlined"
       class="calc-card-calAndRes">
-      <mat-card-title>tähän arvioidun kk erän arvo</mat-card-title>
+      <mat-card-title>Arvioitu kk-erä:
+
+        <!--
+         Kuukausiarvio tässä, mutta voisi olla myös .ts tiedostossa,
+        piti etsiä netistä tieto miten tässä saisi järkevästi kahden desimaalin
+        tarkkuuteen, päädyin käyttämään tuota .toFixediä.
+        lähde: https://www.reddit.com/r/typescript/comments/efid2b/how_to_round_to_2_decimal_places_with_typescript/
+        -->
+
+        {{ loanApplication.calculateMonthlyCost(9.5).toFixed(2) }} €.
+      </mat-card-title>
     </mat-card>
     <hr>
 

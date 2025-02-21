@@ -8,6 +8,7 @@ import {NgIf} from "@angular/common";
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {MatSlider, MatSliderThumb} from '@angular/material/slider';
+import {ExamLoanApplication} from '../models/exam-loan-application';
 
 @Component({
   selector: 'app-loan-calculator',
@@ -37,6 +38,13 @@ export class LoanCalculatorComponent {
   constructor(private router: Router,
               @Optional() private dialogRef: MatDialogRef<LoanCalculatorComponent>) {
   }
+
+
+  // lainahakemus
+  loanApplication: ExamLoanApplication = new ExamLoanApplication();
+
+
+
 
   // funktio joka tarkistaa onko dialogi aktiivinen
   isInDialog(): boolean {

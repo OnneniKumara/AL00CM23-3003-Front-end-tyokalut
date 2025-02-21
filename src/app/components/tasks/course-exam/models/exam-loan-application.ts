@@ -10,14 +10,23 @@ export class ExamLoanApplication {
   phoneNumber: string;
 
   constructor() {
-    this.loanAmount = 0;
-    this.loanDuration = 0;
+    this.loanAmount = 500;
+    this.loanDuration = 1;
     this.estimatedMonthlyCost = 0;
     this.sosSecNumber = "";
     this.firstName = "";
     this.lastName = "";
     this.email = "";
     this.phoneNumber = "";
+  }
+
+  // laskee kuukausittaisen kustannuksen lainalle annetulla korkoprosentilla
+  // ja asettaa sen estimatedMonthlyCost -muuttujaan.
+  // hieman muunneltuna tehtävänannosta.
+  calculateMonthlyCost(intrestRate: number) {
+    this.estimatedMonthlyCost = ((Math.pow((1 + intrestRate / 1200), 12 * this.loanDuration) * intrestRate / 1200) /
+      ((Math.pow((1 + intrestRate / 1200), 12 * this.loanDuration)) - 1) * this.loanAmount);
+    return this.estimatedMonthlyCost;
   }
 
 }
