@@ -1,6 +1,8 @@
-/* Kun kompnentti laukaistaan dialogina, pitää ohittaa dialogin oletus muotoilu,
- jumitin tätä kohtaa noin 2-3 h etsien tietoa netistä ja kokeillen oli
- muuten todella turhauttavaa.. MITEN NÄITÄ VOI TIETÄÄ?
+/*
+
+Otin tylysti copypastena lainalaskuriin laskin komponentista
+css tiedoston ja muokkasin sitä lainalaskurin tarpeisiin.
+
  */
 ::ng-deep .mat-mdc-dialog-content {
   border-radius: 5px !important;
@@ -14,7 +16,7 @@
 .calc-card {
   display: flex;
   flex-direction: column; /* Sisällön pystysuuntainen järjestys */
-  width: 400px;
+  width: 370px;
 
   padding: 10px;
   box-sizing: border-box;
@@ -115,4 +117,14 @@
   border-radius: 5px; /* Pyöristetyt reunat */
   width: 95%;
   height: 95%;
+}
+
+hr {
+  width: 320px;
+  border: 1px solid white;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+  color: var(--mat-sys-on-background);
 }

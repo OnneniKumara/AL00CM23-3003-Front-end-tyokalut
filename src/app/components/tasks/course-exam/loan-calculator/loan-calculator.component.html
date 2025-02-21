@@ -1,0 +1,310 @@
+<mat-card
+  *ngIf="active"
+  appearance="outlined"
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  class="calc-card"
+>
+
+  <!-- 'vetokahva/dragbar' -->
+  <div cdkDragHandle
+       class="drag-bar-cdk-drag-handle"
+  >
+    <!-- svg siirto-ikoni -->
+    <span>
+      <svg fill="currentColor" viewBox="0 0 24 24" width="24px">
+      <path
+        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+      <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+    </span>
+    <!-- otsikko -->
+    <span>Lainalaskuri</span>
+
+    <!-- sulje-nappi -->
+    <span>
+    <button (click)="onClose()"
+            mat-dialog-close
+            mat-icon-button
+
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+      </span>
+  </div>
+
+  <!-- kortin sisältö -->
+  <mat-card-content>
+
+    <!-- lainan määrä -->
+    <mat-card
+      appearance="outlined"
+      class="calc-card-calAndRes">
+      <mat-card-title>Lainan määrä: {{ this.loanApplication.loanAmount }} €</mat-card-title>
+    </mat-card>
+
+    <mat-slider
+      [max]="10000"
+      [min]="500"
+      [step]="100"
+      class="margin">
+      <input
+        [(ngModel)]="loanApplication.loanAmount"
+        matSliderThumb>
+    </mat-slider>
+
+    <!-- lainan aika -->
+    <mat-card
+      appearance="outlined"
+      class="calc-card-calAndRes">
+      <mat-card-title>Laina-aika: {{ this.loanApplication.loanDuration }} vuotta.</mat-card-title>
+    </mat-card>
+
+    <mat-slider
+      [max]="10"
+      [min]="1"
+      [step]="1"
+      class="margin">
+      <input
+        [(ngModel)]="loanApplication.loanDuration"
+        matSliderThumb>
+    </mat-slider>
+
+    <!-- Arvioitu kuukausierä -->
+    <mat-card
+      appearance="outlined"
+      class="calc-card-calAndRes">
+      <mat-card-title>Arvioitu kk-erä:
+
+        <!--
+         Kuukausiarvio tässä, mutta voisi olla myös .ts tiedostossa,
+        piti etsiä netistä tieto miten tässä saisi järkevästi kahden desimaalin
+        tarkkuuteen, päädyin käyttämään tuota .toFixediä.
+        lähde: https://www.reddit.com/r/typescript/comments/efid2b/how_to_round_to_2_decimal_places_with_typescript/
+        -->
+
+        {{ loanApplication.calculateMonthlyCost(9.5).toFixed(2) }} €.
+      </mat-card-title>
+    </mat-card>
+
+    <!-- Arvioitu kokonaiskustannus -->
+    <mat-card
+      appearance="outlined"
+      class="calc-card-calAndRes">
+      <mat-card-title>Kok. kust. {{ loanApplication.calculateTotalCost().toFixed(2) }} €.
+      </mat-card-title>
+    </mat-card>
+
+    <!-- nollaa slaiderit -->
+
+    <button
+      (click)="resetSliders()"
+      mat-raised-button
+    >
+      Nollaa slaiderit
+    </button>
+
+    <hr>
+
+    <!-- Lainan hakeminen -->
+    <div class="joku">
+      <form
+        #loanForm="ngForm"
+        (ngSubmit)="onSubmit(loanApplication)">
+        <!--(ngSubmit)="loanService.sendLoanApplication(loanApplication)"> -->
+
+        <h1 class="title">Täytä henkilötiedot</h1>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Hetu</mat-label>
+            <input
+              #sosSecNumber="ngModel"
+              [(ngModel)]="loanApplication.sosSecNumber"
+              matInput
+              maxlength="11"
+              minlength="11"
+              name="sosSecNumber"
+              ngModel
+              pattern="^\d{6}-\d{4}$"
+              placeholder="Sosiaaliturvatunnus"
+              required/>
+
+
+            <mat-error
+              *ngIf="sosSecNumber.hasError(
+          'required')"
+            >Syötä Sosiaaliturvatunnuksesi
+            </mat-error>
+            <mat-error
+              *ngIf="sosSecNumber.hasError(
+          'minlength') && sosSecNumber.dirty"
+            >Pituus 11 merkkiä
+            </mat-error>
+            <mat-error
+              *ngIf="sosSecNumber.hasError(
+          'pattern')"
+            >Syötä muodossa ppkkvv-xxxx
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Etunimi</mat-label>
+            <input
+              #firstname="ngModel"
+              [(ngModel)]="loanApplication.firstName"
+              matInput
+              minlength="2"
+              name="firstname"
+              ngModel
+              pattern="^[a-öA-Ö]*$"
+              placeholder="Nimesi"
+              required/>
+            <mat-error
+              *ngIf="firstname.hasError(
+          'required')"
+            >Syötä etunimesi
+            </mat-error>
+            <mat-error
+              *ngIf="firstname.hasError(
+          'minlength')"
+            >Minimipituus 2 merkkiä
+            </mat-error>
+            <mat-error
+              *ngIf="firstname.hasError(
+          'pattern')"
+            >Syötä vain kirjaimia
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Sukunimi</mat-label>
+            <input
+              #lastname="ngModel" [(ngModel)]="loanApplication.lastName"
+              matInput
+              minlength="2"
+              name="lastname"
+              ngModel
+              pattern="^[a-zA-Z]*$" placeholder="Sukunimesi"
+              required/>
+            <mat-error
+              *ngIf="lastname.hasError(
+          'required')"
+            >Syötä sukunimesi
+            </mat-error>
+            <mat-error
+              *ngIf="lastname.hasError(
+          'minlength')"
+            >Syötä vähintään kaksi merkkiä
+            </mat-error>
+            <mat-error
+              *ngIf="lastname.hasError(
+          'pattern')"
+            >Syötä vain kirjaimia
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Sähköposti</mat-label>
+            <input
+              #email="ngModel"
+              [(ngModel)]="loanApplication.email"
+              matInput
+              name="email"
+              ngModel
+              placeholder="erkki@esimerk.ki"
+              required
+              email
+              type="email"/>
+            <mat-error
+              *ngIf="email.hasError(
+          'required')"
+            >Syötä sähköpostisi
+            </mat-error>
+            <mat-error
+              *ngIf="email.hasError(
+          'email')"
+            >Epäkelpo sähköpostiosoite
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- email validaatio: https://mailtrap.io/blog/angular-email-validation/-->
+
+        <div class="inputfield">
+          <mat-form-field>
+            <mat-label>Puhelinnumero</mat-label>
+            <input
+              #phoneNumber="ngModel"
+              [(ngModel)]="loanApplication.phoneNumber"
+              matInput
+              name="phoneNumber"
+              ngModel
+              pattern="^(\+358|0)(4[0-9]{1}|50|52|53|54|55|56|57|58|59|41|42|43|44|45|46|47|48|49)[0-9]{6,7}$"
+              placeholder="+358 40 123 4567"
+              required
+              type="phoneNumber"/>
+
+            <!--
+            puhelinnumeron regex täältä:
+            https://regex101.com/library/ffGtsW
+            -->
+
+            <mat-error *ngIf="phoneNumber.hasError(
+            'required')">Syötä puhelinnumerosi
+            </mat-error>
+            <mat-error
+              *ngIf="phoneNumber.hasError(
+          'pattern')"
+            >Syötä kelvollinen puhelinnumero
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <hr>
+
+        <div class="inputfield">
+          <mat-checkbox
+            #tickChecked="ngModel"
+            [(ngModel)]="isTickChecked" name="accept"
+            required
+          >Hyväksy lainaehdot.
+          </mat-checkbox>
+          <mat-error
+            *ngIf="tickChecked.hasError(
+        'required')
+        && tickChecked.dirty"
+          >Hyväksy käyttöehdot
+          </mat-error>
+        </div>
+        <div class="gap-1 row">
+          <button
+            style="margin-top: 10px; width: 40%; margin: auto;"
+            [disabled]="loanForm.invalid"
+            mat-raised-button
+            type="submit"
+          >Rekisteröidy
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- jos lainalaskuri ei ole aktiivinen eikä dialogissa, näytetään vain 'palautusnappi' -->
+<div *ngIf="!active && !isInDialog()">
+  <button
+    (click)="active = true"
+    *ngIf="!active"
+    mat-raised-button>
+
+    palauta lainalaskuri
+
+  </button>
+</div>
