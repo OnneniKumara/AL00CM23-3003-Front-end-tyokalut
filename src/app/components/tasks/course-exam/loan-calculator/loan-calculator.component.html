@@ -28,22 +28,47 @@
             mat-icon-button
 
     >
-      <mat-icon>Sulje</mat-icon>
+      <mat-icon>close</mat-icon>
     </button>
       </span>
   </div>
 
   <!-- kortin sisältö -->
   <mat-card-content>
+
+    <!-- lainan määrä -->
     <mat-card
       appearance="outlined"
-      class="calc-card-calAndRes"
-    >
-      <mat-card-title>sisältöä</mat-card-title>
-
-
+      class="calc-card-calAndRes">
+      <mat-card-title>tähän lainan määrän arvo</mat-card-title>
     </mat-card>
 
+    <mat-slider
+      class="margin">
+      <input
+        matSliderThumb>
+    </mat-slider>
+
+    <!-- lainan aika -->
+    <mat-card
+      appearance="outlined"
+      class="calc-card-calAndRes">
+      <mat-card-title>tähän laina-aika</mat-card-title>
+    </mat-card>
+
+    <mat-slider
+      class="margin">
+      <input
+        matSliderThumb>
+    </mat-slider>
+
+    <!-- Arvioitu kuukausierä -->
+    <mat-card
+      appearance="outlined"
+      class="calc-card-calAndRes">
+      <mat-card-title>tähän arvioidun kk erän arvo</mat-card-title>
+    </mat-card>
+    <hr>
 
   </mat-card-content>
 </mat-card>

@@ -118,3 +118,8 @@ css tiedoston ja muokkasin sitä lainalaskurin tarpeisiin.
   width: 95%;
   height: 95%;
 }
+
+hr {
+  width: 350px;
+  border: 1px solid white;
+}

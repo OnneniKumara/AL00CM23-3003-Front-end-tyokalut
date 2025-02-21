@@ -6,6 +6,8 @@ import {MatDialogClose, MatDialogRef} from "@angular/material/dialog";
 import {MatIcon} from "@angular/material/icon";
 import {NgIf} from "@angular/common";
 import {Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {MatSlider, MatSliderThumb} from '@angular/material/slider';
 
 @Component({
   selector: 'app-loan-calculator',
@@ -19,7 +21,10 @@ import {Router} from '@angular/router';
     MatDialogClose,
     MatIcon,
     MatIconButton,
-    NgIf
+    NgIf,
+    FormsModule,
+    MatSlider,
+    MatSliderThumb
   ],
   templateUrl: './loan-calculator.component.html',
   styleUrl: './loan-calculator.component.css'
