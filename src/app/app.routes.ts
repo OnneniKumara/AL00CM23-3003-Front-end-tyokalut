@@ -6,6 +6,9 @@ import {TestingComponent} from './components/temp/testing/testing.component';
 import {FeedbackComponent} from './components/tasks/feedback/feedback.component';
 import {ReactiveFormComponent} from './components/tasks/reactive-form/reactive-form.component';
 import {FrontpageComponent} from './components/site/frontpage/frontpage.component';
+import {
+  TemplateFormValidationComponent
+} from './components/tasks/template-form-validation/template-form-validation.component';
 
 export const routes: Routes = [
 
@@ -38,6 +41,11 @@ export const routes: Routes = [
     path: 'frontpage',
     component: FrontpageComponent,
     data: {title: 'Etusivu'}
+  },
+  {
+    path: 'template-driven-form',
+    component: TemplateFormValidationComponent,
+    data: {title: 'Lomakkeen validointi - malli/templatepohjainen'}
   },
 
   // esimerkki redirektauksesta.
