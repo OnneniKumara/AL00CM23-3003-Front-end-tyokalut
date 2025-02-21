@@ -14,7 +14,7 @@ This repository contains a project created for a mandatory course in my degree p
 
 ---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9. and updated to 19.1.5 during the process of making.
 
 # Angular Installation Instructions
 
