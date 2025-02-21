@@ -8,8 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {pwdValidator} from './pwd-validator';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {PopUpDialogComponent} from '../../helpers/pop-up-dialog/pop-up-dialog.component';
+import {PopUpService} from '../../../services/pop-up.service';
 
 @Component({
   selector: 'reactive-form',
@@ -28,6 +27,9 @@ import {PopUpDialogComponent} from '../../helpers/pop-up-dialog/pop-up-dialog.co
   styleUrl: './reactive-form.component.css',
 })
 export class ReactiveFormComponent implements OnInit {
+
+  // PopUpService
+  private popUpService = inject(PopUpService);
 
   registerForm!: FormGroup;
   toggleVisibility = signal(true);
@@ -136,7 +138,8 @@ export class ReactiveFormComponent implements OnInit {
       ],
     },
   ];
-  private dialog = inject(MatDialog);
+
+  // private dialog = inject(MatDialog);
   private router = inject(Router);
 
   get username() {
@@ -182,8 +185,8 @@ export class ReactiveFormComponent implements OnInit {
     // laitetaan nyt vaikka konsoliin lokia ja lomakkeen tiedot jsonina
     console.log('Form submitted\n', this.registerForm.value);
 
-    // ja vaikka dialogiin ilmoitus
-    this.openDialog(
+    // ja vaikka servicen kautta dialogiin ilmoitus
+    this.popUpService.openDialog(
       'Rekisteröityminen onnistui!\n' +
       'sinut ohjataan etusivulle\n\n' +
       'lomakkeen tiedot:\n\n' +
@@ -198,12 +201,6 @@ export class ReactiveFormComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  // tehdään pop-up-dialogi
-  openDialog(message: string): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {message};
-    this.dialog.open(PopUpDialogComponent, dialogConfig);
-  }
 
 // kentät, joita käytetään lomakkeessa ja
 

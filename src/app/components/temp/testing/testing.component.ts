@@ -3,9 +3,8 @@ import {CalcComponent} from '../../tasks/calc/calc.component';
 import {FormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MatSlider, MatSliderThumb} from '@angular/material/slider';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {PopUpDialogComponent} from '../../helpers/pop-up-dialog/pop-up-dialog.component';
 import {MatFormField, MatInput} from '@angular/material/input';
+import {PopUpService} from '../../../services/pop-up.service';
 
 
 @Component({
@@ -25,6 +24,8 @@ import {MatFormField, MatInput} from '@angular/material/input';
 export class TestingComponent {
   @ViewChild(CalcComponent) calcComponent!: CalcComponent;
 
+  // PopUpService
+  protected popUpService = inject(PopUpService);
 
   title = 'Omia testejä ja muuta epäkuranttia koodia.';
 
@@ -38,7 +39,7 @@ export class TestingComponent {
 
   dialogiViesti: string = "";
 
-  private dialog = inject(MatDialog);
+  // private dialog = inject(MatDialog);
 
   narusPeppi() {
     if (this.perusNappi != 'naruspeppi!') {
@@ -61,10 +62,12 @@ export class TestingComponent {
       this.nappi_teksti = 'oletusteksti'
   }
 
+  /*
   openDialog(message: string): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {message};
     this.dialog.open(PopUpDialogComponent, dialogConfig);
   }
+  */
 
 }
