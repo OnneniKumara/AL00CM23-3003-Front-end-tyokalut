@@ -113,4 +113,10 @@ export class LoanCalculatorComponent {
     this.router.navigate(['']);
   }
 
+  resetSliders(): void {
+    this.loanApplication.loanAmount = 500; // palautetaan oletukseen
+    this.loanApplication.loanDuration = 1; // palautetaan oletukseen
+    // kutsutaan PopUpServiceä
+    this.popUpService.openDialog("Arvot nollattu");
+  }
 }

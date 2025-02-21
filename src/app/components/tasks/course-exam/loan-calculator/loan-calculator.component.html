@@ -86,6 +86,16 @@
         {{ loanApplication.calculateMonthlyCost(9.5).toFixed(2) }} €.
       </mat-card-title>
     </mat-card>
+
+    <!-- nollaa slaiderit -->
+
+    <button
+      (click)="resetSliders()"
+      mat-raised-button
+    >
+      Nollaa slaiderit
+    </button>
+
     <hr>
 
     <!-- Lainan hakeminen -->
