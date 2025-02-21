@@ -6,7 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {NgForOf, NgIf} from '@angular/common';
-import {Question} from '../../helpers/Question/question';
+import {Question} from '../../Models/Question/question';
 import {MatButton} from '@angular/material/button';
 
 @Component({
