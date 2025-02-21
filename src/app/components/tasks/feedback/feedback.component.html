@@ -1,4 +1,9 @@
-<button (click)="resetSliders()" mat-button>Reset Sliders</button>
+<button
+  (click)="resetSliders()"
+  mat-raised-button
+>
+  Nollaa slaiderit
+</button>
 
 <mat-card *ngFor="let question of questions; let i = index">
   <mat-card-content *ngIf="admin">
@@ -42,8 +47,12 @@
       <h4>{{ question.questionText }}</h4>
 
       <div class="label-container">
+        <span>
         <label class="name-label">Vastaus: {{ question.answer }}</label>
-        <label class="value-label">{{ question.value }}</label>
+        </span>
+        <span>
+        <label class="name-label">Arvo: {{ question.value }}</label>
+        </span>
       </div>
       <mat-slider
         [disabled]="question.disabled"
@@ -55,8 +64,8 @@
         class="margin"
       >
         <input
-          (change)="onSliderChange($event, question)"
           [(ngModel)]="question.value"
+          (input)="onSliderChange($event, question.value, question)"
           matSliderThumb>
       </mat-slider>
     </mat-card-content>
