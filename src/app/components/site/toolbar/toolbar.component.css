@@ -14,7 +14,7 @@ mat-toolbar {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 25vh;
+  width: 25vw;
 }
 
 .left1 {
@@ -34,12 +34,12 @@ mat-toolbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vh;
+  width: 50vw;
 }
 
 .right {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 25vh;
+  width: 25vw;
 }
