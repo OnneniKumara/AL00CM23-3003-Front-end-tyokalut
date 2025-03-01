@@ -8,18 +8,17 @@ h1, h2, h3, h4, h5, h6, p {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 50vh;
+  width: 60vw;
 }
 
 hr {
-  width: 70vh;
+  width: 60vw;
   border: 1px solid var(--mat-sys-on-background);
 }
 
 mat-expansion-panel {
   display: flex;
   flex-direction: column;
-  width: 60vh;
 }
 
 mat-expansion-panel img {
