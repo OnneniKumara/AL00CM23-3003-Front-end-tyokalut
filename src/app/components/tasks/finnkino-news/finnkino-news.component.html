@@ -3,12 +3,29 @@
 <hr>
 
 <div class="container">
+
+  /*
+  tehtävä 9. lisäys, hakuominaisuus
+  */
+  <form>
+    <mat-form-field>
+      <input
+        [(ngModel)]="searchString"
+        matInput
+        name="searchString"
+        placeholder="Hae otsikoista"
+      >
+    </mat-form-field>
+  </form>
 <mat-accordion>
 
   <mat-expansion-panel
     (closed)="setPanelOpenState(i, false)"
-    (opened)="setPanelOpenState(i, true)" *ngFor="let item of finnKinoData$
-    | async; let i = index"
+    (opened)="setPanelOpenState(i, true)"
+    *ngFor="let item of finnKinoData$
+    | async
+    | finnKinoFilter: searchString;
+     let i = index"
     [ngClass]="{'panel-open': panelOpenState[i]}"
   >
     <mat-expansion-panel-header>
