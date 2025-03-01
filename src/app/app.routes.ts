@@ -10,6 +10,7 @@ import {
   TemplateFormValidationComponent
 } from './components/tasks/template-form-validation/template-form-validation.component';
 import {LoanCalculatorComponent} from './components/tasks/course-exam/loan-calculator/loan-calculator.component';
+import {FinnkinoNewsComponent} from './components/tasks/finnkino-news/finnkino-news.component';
 
 export const routes: Routes = [
 
@@ -52,6 +53,11 @@ export const routes: Routes = [
     path: 'loan-calculator',
     component: LoanCalculatorComponent,
     data: {title: 'Kurssin tentti - lainalaskuri'}
+  },
+  {
+    path: 'api-call-and-json-representation',
+    component: FinnkinoNewsComponent,
+    data: {title: 'API-kutsu - Finnkinon uutiset'}
   },
   // esimerkki redirektauksesta.
   {

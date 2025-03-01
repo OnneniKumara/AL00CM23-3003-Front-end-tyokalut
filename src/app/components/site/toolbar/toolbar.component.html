@@ -39,7 +39,7 @@
     https://jossef.github.io/material-design-icons-iconfont/
     -->
 
-  <button [routerLink]="''"
+  <button [routerLink]="'frontpage'"
           mat-menu-item
           routerLinkActive="active">
     <mat-icon>home</mat-icon>
@@ -79,6 +79,13 @@
           routerLinkActive="active">
         <mat-icon>dynamic_form</mat-icon>
     <span>Reaktiivinen lomake</span>
+  </button>
+
+  <button [routerLink]="'/api-call-and-json-representation'"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>api</mat-icon>
+    <span>API-kutsu - Finnkinon uutiset</span>
   </button>
 
   <button (click)="openLoanCalcDialog()"
