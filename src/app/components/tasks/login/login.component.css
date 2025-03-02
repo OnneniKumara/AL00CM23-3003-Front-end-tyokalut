@@ -20,3 +20,8 @@ h1, h4 {
   justify-content: center;
   align-items: center;
 }
+
+hr {
+  width: 60vw;
+  border: 1px solid var(--mat-sys-on-background);
+}

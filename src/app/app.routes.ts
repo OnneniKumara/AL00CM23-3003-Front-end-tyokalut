@@ -12,6 +12,7 @@ import {
 import {LoanCalculatorComponent} from './components/tasks/course-exam/loan-calculator/loan-calculator.component';
 import {FinnkinoNewsComponent} from './components/tasks/finnkino-news/finnkino-news.component';
 import {LoginComponent} from './components/tasks/login/login.component';
+import {AdminpanelComponent} from './components/tasks/adminpanel/adminpanel.component';
 
 export const routes: Routes = [
 
@@ -64,6 +65,11 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     data: {title: 'Kirjaudu hallintapaneeliin'}
+  },
+  {
+    path: 'acp',
+    component: AdminpanelComponent,
+    data: {title: 'Ylläpidon hallintapaneeli'}
   },
   // esimerkki redirektauksesta.
   {

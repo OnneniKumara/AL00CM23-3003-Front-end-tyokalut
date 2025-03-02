@@ -93,6 +93,19 @@
   </p>
   <hr>
 
+  <h4>Reititys admin-näkymään</h4>
+  <p>
+    kuvaus.
+    Käytetty omaa backendia joka on toteutettu .NET Corella. Backendin koodi löytyy täältä:
+    <a href="linkki">linkki</a>
+    Angularissa on luotu palveluita, jotka hakevat tietoja käyttäjästä backendista kirjautumistiedoilla.
+    Backend palauttaa JWT:n, jonka perusteella käyttäjä autentikoidaan, jonka jälkeen käyttäjä ohjataan
+    ylläpitonäkymään. JWT tallennetaan SessionManagement serviceen, ja se poistetaan uloskirjautumisen yhteydessä.
+    JWT dekoodataan jwtDecode-kirjastolla, ja siitä saadaan käyttäjän tiedot. Auth-Guard palvelu tarkistaa että
+    käyttäjällä
+    on admin-rooli.
+  </p>
+  <hr>
 
   <h4>Julkaisupaketin luominen</h4>
   <p>
