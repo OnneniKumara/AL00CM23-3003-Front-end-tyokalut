@@ -27,7 +27,16 @@
   </div>
 
   <div class="right">
-
+    <ng-container>
+      <div *ngIf="firstName() && !username()" class="column full-center">
+        <h3>Tervetuloa {{ firstName() }}</h3>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!firstName() && username()">
+      <div *ngIf="!firstName()" class="column full-center">
+        <h3>Tervetuloa {{ username() }}</h3>
+      </div>
+    </ng-container>
   </div>
 
 </mat-toolbar>
@@ -95,11 +104,20 @@
     <span>Tentti: Lainalaskuri</span>
   </button>
 
-  <button [routerLink]="'/login'"
+  <button *ngIf="!firstName() && !username()"
+          [routerLink]="'/login'"
           mat-menu-item
           routerLinkActive="active">
     <mat-icon>admin_panel_settings</mat-icon>
     <span>Kirjaudu hallintapaneeliin</span>
+  </button>
+
+  <button (click)="logout()"
+          *ngIf="firstName() || username()"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <span>Kirjaudu ulos</span>
   </button>
 
 

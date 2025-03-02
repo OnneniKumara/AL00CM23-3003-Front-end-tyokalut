@@ -39,7 +39,7 @@ export class LoginComponent {
   router = inject(Router);
 
   // PopUpService
-  private popUpService = inject(PopUpService);
+  popUpService = inject(PopUpService);
 
   username = signal('');
   password = signal('');
@@ -64,6 +64,7 @@ export class LoginComponent {
       .subscribe({
         next: (data) => {
           if (data) {
+            console.log(data);
             this.sessionService.setSession(data);
             this.router.navigate(['/acp']);
           }

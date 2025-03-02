@@ -13,6 +13,7 @@ import {LoanCalculatorComponent} from './components/tasks/course-exam/loan-calcu
 import {FinnkinoNewsComponent} from './components/tasks/finnkino-news/finnkino-news.component';
 import {LoginComponent} from './components/tasks/login/login.component';
 import {AdminpanelComponent} from './components/tasks/adminpanel/adminpanel.component';
+import {authGuard} from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -69,7 +70,8 @@ export const routes: Routes = [
   {
     path: 'acp',
     component: AdminpanelComponent,
-    data: {title: 'Ylläpidon hallintapaneeli'}
+    data: {title: 'Ylläpidon hallintapaneeli'},
+    canActivate: [authGuard]
   },
   // esimerkki redirektauksesta.
   {

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 
+
 @Component({
   selector: 'app-adminpanel',
   imports: [],
@@ -7,5 +8,6 @@ import {Component} from '@angular/core';
   styleUrl: './adminpanel.component.css'
 })
 export class AdminpanelComponent {
+
 
 }

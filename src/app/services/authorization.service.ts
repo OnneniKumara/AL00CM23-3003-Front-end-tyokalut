@@ -28,7 +28,7 @@ export class AuthorizationService implements HttpInterceptor {
     const token = this.sessionService.getToken();
     const requestWithAuth = req.clone({
       setHeaders: {
-        Authorization: `${token}`
+        Authorization: `${token}`,
       },
     });
     return next.handle(requestWithAuth);

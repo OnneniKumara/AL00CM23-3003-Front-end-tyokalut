@@ -20,12 +20,11 @@ export class SessionManagementService {
    */
   setSession(sessionData: UserDTO): void {
     try {
-      const user = sessionData.result;
-
-      localStorage.setItem(this.sessionKey, JSON.stringify(user));
+      localStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+      console.log("setSession funktio, kävi täällä: ", sessionData)
       this.authenticated.set(true);
     } catch (error) {
-      console.error('Failted to save session data:', error);
+      console.error('Failed to save session data:', error);
     }
   }
 
@@ -113,4 +112,14 @@ export class SessionManagementService {
   isAuthenticated() {
     return this.authenticated();
   }
+
+  getAuthenticatedSignal() {
+    return this.authenticated.asReadonly();
+  }
+
+  checkAuthStatus(): void {
+    const session = localStorage.getItem(this.sessionKey);
+    this.authenticated.set(!!session);
+  }
+
 }
