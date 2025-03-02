@@ -5,7 +5,7 @@
 
   <h3>AL00CM23-3003-Front-end-tyokalut</h3>
   <p>
-    Tämä on yksinkertainen Angular-sovellus / sivusto, joka on tehty LAB-AMK:n kurssin
+    Tämä on Angular-sovellus / sivusto, joka on tehty LAB-AMK:n kurssin
     <a href="https://opinto-opas.lab.fi/realization/32066">AL00CM23-3003-Front-end-tyokalut'</a>
     harjoitustöinä. Sovellus koostuu useista eri näkymistä, joita voi navigoida vasemman
     laidan valikosta. Tässä näkymässä on kuvaus yksittäisten harjoitusten komponenteista jne.
@@ -25,7 +25,12 @@
 
   <h4>Palautesivu</h4>
   <p>
-    Kuvaus tähän
+    Tässä harjoituksessa on yksinkertainen palautekysely, joka on totetuettu Angular Materialin Slider-elementillä,
+    jolla voi antaa arvosanan 1-5. Arvosanaa voi muuttaa liu'uttamalla slideria. Kysymyksille on oma 'question' luokka,
+    joka
+    sisältää muuttujat kysymyksen tekstille sekä arvosanan asettavan funktion. Kysymykset on määritelty
+    palautepalvelussa 'feedback.service.ts',
+    joka tarjoaa metodin hakea kysymykset.
   </p>
   <hr>
 
@@ -44,13 +49,13 @@
 
   <h4>Lomakkeen validointi (Template driven form)</h4>
   <p>
-    Kuvaus tähän
+    Toteutettu rekisteröitymislomake validoinnilla käyttäen Angularin Template Driven Formsia.
   </p>
   <hr>
 
   <h4>Lomakkeen validointi (Reactive form)</h4>
   <p>
-    Kuvaus tähän
+    Toteutettu rekisteröitymislomake validoinnilla käyttäen Angularin Reactive Formsia.
   </p>
   <hr>
 
@@ -61,16 +66,33 @@
     asettaa palautetehtävän arvon mukaan vastaus.
   </p>
   <p>
-    Toinen palvelu on pop-up.service.ts, joka on yksinkertainen palvelu, joka tarjoaa
+    Toinen palvelu on oma kokeiluni, pop-up.service.ts, joka on yksinkertainen palvelu, joka tarjoaa
     metodin näyttää pop-up-ikkuna omalla sisällöllä. Ikkuna on toteutettu Angular Materialin dialogilla.
   </p>
   <hr>
 
   <h4>API-kutsu ja JSON aineiston esittäminen - Finnkinon uutiset</h4>
   <p>
-    Kuvaus tähän
+    Toteutettu API-kutsu Finnkinon uutisiin, ja esitetty uutiset listana. Uutiset haetaan Finnkinon omasta API:sta.
+    Komponenttia varten on otettu käyttöön globaalisti Angularin HttpClient-moduuli, sekä luotu
+    palvelu, joka hakee uutiset. Uutiset on esitetty Angular Materialin Accordion- ja Expansion-panel elementillä,
+    joka avautuu klikkaamalla.
+  </p>
+  <p>
+    Uutisten päiväys/aikaleima on esitetty otsikossa, ja uutisen otsikko ja kategoria on esitetty kuvauksessa.
+    Uutisen mahdollinen kuva ja uutisen sisältö on esitetty tekstikentässä. Lisäsin myös linkin, josta pääsee katsomaan
+    uutisen Finnkinon sivuilla.
   </p>
   <hr>
+
+  <h4>Hakukenttä ja custom pipe</h4>
+  <p>
+    Edellisen tehtvän jatkona toteutettu hakukenttä, joka hakee Finnkinon uutisista otsikon perusteella.
+    Hakukenttä on toteutettu Angular Materialin input-elementillä, ja hakutulokset esitetään listana.
+    Itse haku on toteutettu custom pipe:llä, joka suodattaa hakutulokset otsikon perusteella.
+  </p>
+  <hr>
+
 
   <h4>Julkaisupaketin luominen</h4>
   <p>
@@ -84,15 +106,17 @@
   <p>
     "Lainalaskuri" on yksinkertainen laskuri, joka laskee lainan kuukausierän ajanjaksolle ja kokonaiskustannukset.
     Aikaa oli neljä tuntia. Laskuri on toteutettu Angular Materialin card-elementeillä ja slider-elementeillä.
-    Laskuri avautuu dialogina, ja sitä voi liikutella yläpalkista.
-    Korkoprosentti on parametrina funktiossa, mutta en toteuttanut sen muuttamista käyttöliittymästä.
-    Kun laskuri suljetaan, se palauttaa tuloksen kutsujalle pop-up-ikkunassa, sekä tallentaa arvot muuttujiin.
+    Laskuri avautuu dialogina, ja sitä voi liikutella yläpalkista. Korkoprosentti on parametrina funktiossa,
+    mutta en toteuttanut sen muuttamista käyttöliittymästä. Kun laskuri suljetaan, se palauttaa tuloksen
+    kutsujalle pop-up-ikkunassa, sekä tallentaa arvot muuttujiin.
+  </p>
+  <p>
     Pystyin hyödyntämään paljon tekemiäni harjoituksia, mutta jouduin myös tarkistelemaan asioita. Lisäksi väsymys alkoi
     painaa (tentti oli pe iltana klo 16:15-20), joten en jaksanut enää tehdä kaikkea mitä olisin halunnut, kuten
-    korkoprosentin muuttamisen käyttöliittymästä ja html tiedostossa for-loopilla elementtien luomisen jne.
-    Ohjelmointi tapahtui JetBrains WebStormilla, ja versionhallinta GitHubilla, lisäsin tentin branchina ja mergean
-    tämän
-    kohta mainiin.
+    korkoprosentin muuttamisen käyttöliittymästä (jota tosin ei vaadittu) ja html tiedostossa for-loopilla elementtien
+    luomisen jne.
+    Ohjelmointi tapahtui JetBrains WebStormilla, ja versionhallinta Git/GitHubilla, lisäsin tentin feature-branchina ja
+    mergesin lopuksi mainiin.
   </p>
   <hr>
 
