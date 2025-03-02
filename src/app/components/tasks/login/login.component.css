@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 270px;
+  margin: auto;
+}
+
+.action-button {
+  width: 120px;
+}
+
+h1, h4 {
+  text-align: center;
+  color: var(--mat-sys-on-background);
+}
+
+.align-content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
