@@ -27,7 +27,7 @@ import {SessionManagementService} from '../../../services/session-management.ser
 })
 export class LoginComponent {
 
-  // Service injection
+  // Palvelut
 
   // ApiService
   apiService = inject(ApiService);
@@ -44,8 +44,9 @@ export class LoginComponent {
   username = signal('');
   password = signal('');
   toggleVisibility = signal(true);
-  private loginUrl = "http://localhost:8080/login";
-  private userAuthorizedUrl = "http://localhost:8080/user";
+
+  private loginUrl = "https://localhost:7121/api/Account/login";
+  private userAuthorizedUrl = "https://localhost:7121/api/Account/user/authorized";
 
   login() {
 
@@ -56,7 +57,7 @@ export class LoginComponent {
             this.sessionService.setToken(data.token);
             return this.getAuthorizedUserDetails();
           } else {
-            throw new Error('Invalid credentials');
+            throw new Error('Virheellinen käyttäjätunnus tai salasana');
           }
         })
       )
@@ -68,7 +69,8 @@ export class LoginComponent {
           }
         },
         error: (error) => {
-          this.popUpService.openDialog("Tapahtui virhe: " + error);
+          const errorMessage = JSON.stringify(error);
+          this.popUpService.openDialog("Tapahtui virhe: " + errorMessage);
           this.username.set('');
           this.password.set('');
         },
