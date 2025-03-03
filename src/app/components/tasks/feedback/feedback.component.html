@@ -5,7 +5,7 @@
   Nollaa slaiderit
 </button>
 
-<mat-card *ngFor="let question of questions; let i = index">
+<mat-card *ngFor="let question of questions(); let i = index">
   <mat-card-content *ngIf="admin">
     <h2 class="admin-h2">Slider {{ i + 1 }} configuration</h2>
 

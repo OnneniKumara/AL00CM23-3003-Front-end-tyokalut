@@ -25,7 +25,6 @@ import {PopUpService} from '../../../services/pop-up.service';
     MatButton,
   ],
   providers: [
-    FeedbackService,
     PopUpService
   ],
   templateUrl: './feedback.component.html',
@@ -43,7 +42,7 @@ export class FeedbackComponent {
   private feedbackService = inject(FeedbackService);
 
   // kysymykset service-luokasta
-  questions: Array<Question> = this.feedbackService.getQuestions();
+  questions = this.feedbackService.getQuestions();
 
   protected readonly Question = Question;
 
@@ -52,11 +51,14 @@ export class FeedbackComponent {
     console.log(question, question.answer, event.value, value);
   }
 
+  // nollaus
   resetSliders(): void {
-    this.questions.forEach(question => {
-      question.value = 0; // Reset value to 0
-      question.answer = "Ei Vielä Arvosteltu";
+    const currentQuestions = this.questions();
+    currentQuestions.forEach((question, index) => {
+      const resetQuestion = new Question(question.questionText);
+      this.feedbackService.updateQuestion(index, resetQuestion);
     });
+
     // kutsutaan PopUpServiceä
     this.popUpService.openDialog("Palautteet nollattu");
   }

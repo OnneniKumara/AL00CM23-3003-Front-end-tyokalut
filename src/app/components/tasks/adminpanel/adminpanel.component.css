@@ -1,0 +1,33 @@
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+  color: var(--mat-sys-on-background);
+}
+
+h2 a {
+  color: var(--mat-sys-on-background);
+  text-decoration-color: #2d977f;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+a:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60vw;
+}
+
+hr {
+  width: 60vw;
+  border: 1px solid var(--mat-sys-on-background);
+}
+
+.edit-input {
+  width: 100%;
+}

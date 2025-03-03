@@ -27,7 +27,31 @@
   </div>
 
   <div class="right">
+    <ng-container *ngIf="firstName() && !username()">
+      <div class="column full-center">
+        <h3>Tervetuloa {{ firstName() }}</h3>
+      </div>
+      <button (click)="logout()"
+              *ngIf="firstName() || username()"
+              mat-menu-item
+              routerLinkActive="active">
+        <mat-icon>logout</mat-icon>
+        <span>Kirjaudu ulos</span>
+      </button>
+    </ng-container>
 
+    <ng-container *ngIf="!firstName() && username()">
+      <div class="column full-center">
+        <h3>Tervetuloa {{ username() }}</h3>
+      </div>
+      <button (click)="logout()"
+              *ngIf="firstName() || username()"
+              mat-menu-item
+              routerLinkActive="active">
+        <mat-icon>logout</mat-icon>
+        <span>Kirjaudu ulos</span>
+      </button>
+    </ng-container>
   </div>
 
 </mat-toolbar>
@@ -93,6 +117,14 @@
           routerLinkActive="active">
     <mat-icon>attach_money</mat-icon>
     <span>Tentti: Lainalaskuri</span>
+  </button>
+
+  <button
+    [routerLink]="'/acp'"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <span>Ylläpidon hallintapaneeli</span>
   </button>
 
   <button [routerLink]="'/testing-area'"
