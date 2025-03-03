@@ -95,21 +95,38 @@
 
   <h4>Reititys admin-näkymään</h4>
   <p>
-    kuvaus.
-    Käytetty omaa backendia joka on toteutettu .NET Corella. Backendin koodi löytyy täältä:
-    <a href="linkki">linkki</a>
-    Angularissa on luotu palveluita, jotka hakevat tietoja käyttäjästä backendista kirjautumistiedoilla.
+    Tehtävänannossa kehotettiin käyttämään firebasea, mutta en halua käyttää sitä, joten käytin omaa
+    backendia joka on toteutettu .NET Corella. Backendin koodi löytyy täältä:<br>
+    <a href="https://github.com/OnneniKumara/ApiWithJWTExample" target="_blank">https://github.com/OnneniKumara/ApiWithJWTExample</a>.
+    <br>
+    Backend on oltava käynnissä lokaalisti oletusasetuksilla, jotta admin-näkymä toimii.
+  </p>
+  <p>Angularissa on luotu palveluita, jotka hakevat tietoja käyttäjästä backendista kirjautumistiedoilla.
     Backend palauttaa JWT:n, jonka perusteella käyttäjä autentikoidaan, jonka jälkeen käyttäjä ohjataan
     ylläpitonäkymään. JWT tallennetaan SessionManagement serviceen, ja se poistetaan uloskirjautumisen yhteydessä.
     JWT dekoodataan jwtDecode-kirjastolla, ja siitä saadaan käyttäjän tiedot. Auth-Guard palvelu tarkistaa että
-    käyttäjällä
-    on admin-rooli.
+    käyttäjällä on admin-rooli.
+  </p>
+  <p>
+    Kirjaudu sisään admin-näkymään toolbarin/navigointivalikon toiseksi alimmasta valinnasta, käyttäjätunnus (tai
+    käyttäjänimi)
+    esitetään oikeassa yläkulmassa uloskirjautumisnapin kanssa.
+  </p>
+  <p>
+    <b>Käyttäjätunnus: admin<br>
+      Salasana: password</b>
+  </p>
+  <hr>
+
+  <h4>Palautesivun sisällön muokkaaminen admin-näkymässä (YLIMÄÄRÄINEN TEHTÄVÄ)</h4>
+  <p>
+    Edellisen tehtvän jatkona toteutettu palautesivun sisällön muokkaaminen admin-näkymässä.
   </p>
   <hr>
 
   <h4>Julkaisupaketin luominen</h4>
   <p>
-    Tämä sovellus löytyy myös julkaistuna osoitteesta:
+    Tämä sovellus löytyy myös osoitteesta:
     <a href="https://onnenikumara.github.io/AL00CM23-3003-Front-end-tyokalut" target="_blank">
       https://onnenikumara.github.io/AL00CM23-3003-Front-end-tyokalut</a>
   </p>

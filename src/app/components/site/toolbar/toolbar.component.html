@@ -27,15 +27,30 @@
   </div>
 
   <div class="right">
-    <ng-container>
-      <div *ngIf="firstName() && !username()" class="column full-center">
+    <ng-container *ngIf="firstName() && !username()">
+      <div class="column full-center">
         <h3>Tervetuloa {{ firstName() }}</h3>
       </div>
+      <button (click)="logout()"
+              *ngIf="firstName() || username()"
+              mat-menu-item
+              routerLinkActive="active">
+        <mat-icon>logout</mat-icon>
+        <span>Kirjaudu ulos</span>
+      </button>
     </ng-container>
+
     <ng-container *ngIf="!firstName() && username()">
-      <div *ngIf="!firstName()" class="column full-center">
+      <div class="column full-center">
         <h3>Tervetuloa {{ username() }}</h3>
       </div>
+      <button (click)="logout()"
+              *ngIf="firstName() || username()"
+              mat-menu-item
+              routerLinkActive="active">
+        <mat-icon>logout</mat-icon>
+        <span>Kirjaudu ulos</span>
+      </button>
     </ng-container>
   </div>
 
@@ -104,22 +119,13 @@
     <span>Tentti: Lainalaskuri</span>
   </button>
 
-  <button *ngIf="!firstName() && !username()"
-          [routerLink]="'/login'"
+  <button
+    [routerLink]="'/acp'"
           mat-menu-item
           routerLinkActive="active">
     <mat-icon>admin_panel_settings</mat-icon>
-    <span>Kirjaudu hallintapaneeliin</span>
+    <span>Ylläpidon hallintapaneeli</span>
   </button>
-
-  <button (click)="logout()"
-          *ngIf="firstName() || username()"
-          mat-menu-item
-          routerLinkActive="active">
-    <mat-icon>admin_panel_settings</mat-icon>
-    <span>Kirjaudu ulos</span>
-  </button>
-
 
   <button [routerLink]="'/testing-area'"
           mat-menu-item
