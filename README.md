@@ -10,6 +10,11 @@ This repository contains a project created for a mandatory course in my degree p
 
 ---
 
+## GitHub Pages Deployment
+
+This repository has been deployed using GitHub Pages. You can view the live site [https://onnenikumara.github.io/AL00CM23-3003-Front-end-tyokalut](https://onnenikumara.github.io/AL00CM23-3003-Front-end-tyokalut/). Backend enabled functionality for tasks 10, 11 and 12 are only available when deploed locally in conjunction with this backend: [https://github.com/OnneniKumara/ApiWithJWTExample](https://github.com/OnneniKumara/ApiWithJWTExample)
+
+
 ## Project Overview
 
 ---
