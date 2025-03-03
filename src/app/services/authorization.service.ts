@@ -25,6 +25,15 @@ export class AuthorizationService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+
+    // Jos pyyntö on finnkino-news, ei lisätä tokenia,
+    // koska se on julkisesti saatavilla ja ei vaadi autentikointia
+    // finnkino-news ei toimi, jos token lisätään pyyntöön
+    if (req.url.includes('https://www.finnkino.fi/xml/News/')) {
+      return next.handle(req);
+    }
+
+    // Haetaan token ja lisätään se pyyntöön
     const token = this.sessionService.getToken();
     const requestWithAuth = req.clone({
       setHeaders: {
