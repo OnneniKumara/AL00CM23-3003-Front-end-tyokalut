@@ -27,7 +27,31 @@
   </div>
 
   <div class="right">
+    <ng-container *ngIf="firstName() && !username()">
+      <div class="column full-center">
+        <h3>Tervetuloa {{ firstName() }}</h3>
+      </div>
+      <button (click)="logout()"
+              *ngIf="firstName() || username()"
+              mat-menu-item
+              routerLinkActive="active">
+        <mat-icon>logout</mat-icon>
+        <span>Kirjaudu ulos</span>
+      </button>
+    </ng-container>
 
+    <ng-container *ngIf="!firstName() && username()">
+      <div class="column full-center">
+        <h3>Tervetuloa {{ username() }}</h3>
+      </div>
+      <button (click)="logout()"
+              *ngIf="firstName() || username()"
+              mat-menu-item
+              routerLinkActive="active">
+        <mat-icon>logout</mat-icon>
+        <span>Kirjaudu ulos</span>
+      </button>
+    </ng-container>
   </div>
 
 </mat-toolbar>
@@ -39,7 +63,7 @@
     https://jossef.github.io/material-design-icons-iconfont/
     -->
 
-  <button [routerLink]="''"
+  <button [routerLink]="'frontpage'"
           mat-menu-item
           routerLinkActive="active">
     <mat-icon>home</mat-icon>
@@ -81,11 +105,26 @@
     <span>Reaktiivinen lomake</span>
   </button>
 
+  <button [routerLink]="'/api-call-and-json-representation'"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>api</mat-icon>
+    <span>API-kutsu - Finnkinon uutiset</span>
+  </button>
+
   <button (click)="openLoanCalcDialog()"
           mat-menu-item
           routerLinkActive="active">
     <mat-icon>attach_money</mat-icon>
     <span>Tentti: Lainalaskuri</span>
+  </button>
+
+  <button
+    [routerLink]="'/acp'"
+          mat-menu-item
+          routerLinkActive="active">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <span>Ylläpidon hallintapaneeli</span>
   </button>
 
   <button [routerLink]="'/testing-area'"

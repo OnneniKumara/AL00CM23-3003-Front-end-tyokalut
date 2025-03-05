@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, effect, inject, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatIcon} from '@angular/material/icon';
@@ -9,6 +9,8 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {Title} from '@angular/platform-browser';
 import {filter} from 'rxjs';
 import {LoanCalculatorComponent} from '../../tasks/course-exam/loan-calculator/loan-calculator.component';
+import {SessionManagementService} from '../../../services/session-management.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-toolbar',
@@ -22,6 +24,7 @@ import {LoanCalculatorComponent} from '../../tasks/course-exam/loan-calculator/l
     MatMenu,
     MatMenuItem,
     MatDialogModule,
+    NgIf,
   ],
   providers: [Title],
   templateUrl: './toolbar.component.html',
@@ -31,15 +34,48 @@ export class ToolbarComponent implements OnInit {
 
   title: string = '';
 
+  username = signal<string>('');
+  firstName = signal<string>('');
+  role = signal<string[]>([]);
+  isAuthenticated = signal<boolean>(false);
+
+  sessionManagement = inject(SessionManagementService);
+
   constructor(
     private dialog: MatDialog,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title
   ) {
+
+    // päivitä käyttäjän autentikointitila aina kun se muuttuu
+    effect(() => {
+      this.isAuthenticated.set(this.sessionManagement.isAuthenticated());
+    });
+
+    // Päivitys käyttäjän tiedot aina kun autentikointitila muuttuu
+    effect(() => {
+      if (this.isAuthenticated()) {
+        const userSession = this.sessionManagement.getSession();
+        if (userSession) {
+          this.username.set(userSession.username || '');
+          this.firstName.set(userSession.firstName || '');
+          this.role.set(this.sessionManagement.getRole());
+          console.log('User session updated:', userSession);
+        }
+      } else {
+        this.username.set('');
+        this.firstName.set('');
+        this.role.set([]);
+      }
+    });
   }
 
   ngOnInit() {
+
+    // tarkastetaan autentikointitila
+    this.sessionManagement.checkAuthStatus();
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -50,6 +86,19 @@ export class ToolbarComponent implements OnInit {
         this.titleService.setTitle(data['title']);
       });
     });
+
+    /*
+    const userSession = this.sessionManagement.getSession();
+    if (userSession) {
+
+      if (userSession.username) this.username.set(userSession.username);
+      if (userSession.firstName) this.firstName.set(userSession.firstName);
+      this.role.set(this.sessionManagement.getRole());
+      console.log('Session data:', userSession.username);
+    }
+    else console.log('No session data found');
+    */
+
   }
 
   getChild(activatedRoute: ActivatedRoute): ActivatedRoute {
@@ -61,6 +110,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   // avaa laskin dialogin
+
   openCalcDialog() {
     const dialogRef = this.dialog.open(CalcComponent, {
       hasBackdrop: false, // Taustaelementti (backdrop) poistetaan, jolloin tausta pysyy klikattavana
@@ -82,4 +132,11 @@ export class ToolbarComponent implements OnInit {
       console.log('Lainalaskuri dialogi suljettiin');
     });
   }
+
+  logout() {
+    this.sessionManagement.endSession();
+    // mennään etusivulle
+    this.router.navigate(['']);
+  }
+
 }

@@ -10,6 +10,10 @@ import {
   TemplateFormValidationComponent
 } from './components/tasks/template-form-validation/template-form-validation.component';
 import {LoanCalculatorComponent} from './components/tasks/course-exam/loan-calculator/loan-calculator.component';
+import {FinnkinoNewsComponent} from './components/tasks/finnkino-news/finnkino-news.component';
+import {LoginComponent} from './components/tasks/login/login.component';
+import {AdminpanelComponent} from './components/tasks/adminpanel/adminpanel.component';
+import {authGuard} from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -52,6 +56,22 @@ export const routes: Routes = [
     path: 'loan-calculator',
     component: LoanCalculatorComponent,
     data: {title: 'Kurssin tentti - lainalaskuri'}
+  },
+  {
+    path: 'api-call-and-json-representation',
+    component: FinnkinoNewsComponent,
+    data: {title: 'API-kutsu - Finnkinon uutiset'}
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {title: 'Kirjaudu hallintapaneeliin'}
+  },
+  {
+    path: 'acp',
+    component: AdminpanelComponent,
+    data: {title: 'Ylläpidon hallintapaneeli'},
+    canActivate: [authGuard]
   },
   // esimerkki redirektauksesta.
   {

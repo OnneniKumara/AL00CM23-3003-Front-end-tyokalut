@@ -1,0 +1,53 @@
+<h1>API-kutsu - Finnkinon uutiset</h1>
+
+<hr>
+
+<div class="container">
+
+  /*
+  tehtävä 9. lisäys, hakuominaisuus
+  */
+  <form>
+    <mat-form-field>
+      <input
+        [(ngModel)]="searchString"
+        matInput
+        name="searchString"
+        placeholder="Hae otsikoista"
+      >
+    </mat-form-field>
+  </form>
+<mat-accordion>
+
+  <mat-expansion-panel
+    (closed)="setPanelOpenState(i, false)"
+    (opened)="setPanelOpenState(i, true)"
+    *ngFor="let item of finnKinoData$
+    | async
+    | finnKinoFilter: searchString;
+     let i = index"
+    [ngClass]="{'panel-open': panelOpenState[i]}"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ item.PublishDate | date: 'dd.MM.yyyy - HH:MM' }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ item.Categories.NewsArticleCategory.Name }} - {{ item.Title }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <img alt="finnkino news {{ item.Title }}" height="240px" src="{{ item.ImageURL }}">
+
+    <p>{{ item.HTMLLead }}</p>
+    <br>
+    <div [innerHTML]="item.HTMLContent"></div>
+    <a
+      href="{{ item.ArticleURL }}"
+      target="_blank"
+    >Katso tämä uutinen Finnkinon sivuilla
+    </a>
+  </mat-expansion-panel>
+
+
+</mat-accordion>
+</div>

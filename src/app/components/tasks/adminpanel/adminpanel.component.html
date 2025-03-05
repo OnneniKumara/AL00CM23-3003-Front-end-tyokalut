@@ -1,0 +1,34 @@
+<h1>Ylläpidon hallintapaneeli</h1>
+
+<hr>
+
+<h2>Muokkaa <a (click)="this.router.navigate(['/feedback'])">palautesivun</a> kysymyksiä</h2>
+<table [dataSource]="questions" class="mat-elevation-z8" mat-table>
+  <!-- Question Text Column -->
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell>Kysymys</th>
+    <td *matCellDef="let question; let i = index" mat-cell>
+      <div *ngIf="editingIndex !== i">{{ question.questionText }}</div>
+      <div *ngIf="editingIndex === i">
+        <input [(ngModel)]="editedQuestion!.questionText" class="edit-input" matInput>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th *matHeaderCellDef mat-header-cell>Toiminnot</th>
+    <td *matCellDef="let question; let i = index" mat-cell>
+      <div *ngIf="editingIndex !== i">
+        <button (click)="startEditing(question, i)" color="primary" mat-button>Muokkaa</button>
+      </div>
+      <div *ngIf="editingIndex === i">
+        <button (click)="saveEdit()" color="primary" mat-button>Tallenna</button>
+        <button (click)="cancelEdit()" mat-button>Peruuta</button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+</table>
