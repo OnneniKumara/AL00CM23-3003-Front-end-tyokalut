@@ -5,12 +5,13 @@ import {MatIcon} from '@angular/material/icon';
 import {MatButton} from '@angular/material/button';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {CalcComponent} from '../../tasks/calc/calc.component';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {Title} from '@angular/platform-browser';
 import {filter} from 'rxjs';
 import {LoanCalculatorComponent} from '../../tasks/course-exam/loan-calculator/loan-calculator.component';
 import {SessionManagementService} from '../../../services/session-management.service';
 import {NgIf} from '@angular/common';
+import {PopUpService} from '../../../services/pop-up.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -40,6 +41,12 @@ export class ToolbarComponent implements OnInit {
   isAuthenticated = signal<boolean>(false);
 
   sessionManagement = inject(SessionManagementService);
+
+  // PopUpService
+  protected popUpService = inject(PopUpService);
+  // dialogi viitteet
+  private calcDialogRef: MatDialogRef<CalcComponent> | null = null;
+  private loanCalcDialogRef: MatDialogRef<LoanCalculatorComponent> | null = null;
 
   constructor(
     private dialog: MatDialog,
@@ -86,19 +93,6 @@ export class ToolbarComponent implements OnInit {
         this.titleService.setTitle(data['title']);
       });
     });
-
-    /*
-    const userSession = this.sessionManagement.getSession();
-    if (userSession) {
-
-      if (userSession.username) this.username.set(userSession.username);
-      if (userSession.firstName) this.firstName.set(userSession.firstName);
-      this.role.set(this.sessionManagement.getRole());
-      console.log('Session data:', userSession.username);
-    }
-    else console.log('No session data found');
-    */
-
   }
 
   getChild(activatedRoute: ActivatedRoute): ActivatedRoute {
@@ -110,27 +104,51 @@ export class ToolbarComponent implements OnInit {
   }
 
   // avaa laskin dialogin
-
   openCalcDialog() {
-    const dialogRef = this.dialog.open(CalcComponent, {
-      hasBackdrop: false, // Taustaelementti (backdrop) poistetaan, jolloin tausta pysyy klikattavana
-      disableClose: true, // estä käyttäjää sulkemasta dialogia ulkopuolisella klikkauksella
-    });
+    // tarkastetaab ettei laskin dialogeja ole jo auki
+    if (!this.calcDialogRef) {
+      this.calcDialogRef = this.dialog.open(CalcComponent, {
+        hasBackdrop: false, // Taustaelementti (backdrop) poistetaan, jolloin tausta pysyy klikattavana
+        disableClose: true, // estä käyttäjää sulkemasta dialogia ulkopuolisella klikkauksella
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Laskin dialogi suljettiin');
-    });
+      // tilataan dialogin sulkemistapahtuma
+      this.calcDialogRef.afterClosed().subscribe(result => {
+        console.log('Laskin dialogi suljettiin');
+
+        // tyhjennetään viite dialogiin
+        this.calcDialogRef = null;
+      });
+    }
+    // Muutoin ilmoitetaan käyttäjälle, että vain yksi laskin voi olla auki kerrallaan
+    else {
+      this.popUpService.openDialog('Laskin on jo avattu, vain yksi laskin voi olla auki kerrallaan');
+      console.log('Laskin dialogi on jo auki');
+    }
   }
 
+  // avaa lainalaskuri dialogin
   openLoanCalcDialog() {
-    const dialogRef = this.dialog.open(LoanCalculatorComponent, {
-      hasBackdrop: false,
-      disableClose: true
-    });
+    // tarkastetaab ettei laskin dialogeja ole jo auki
+    if (!this.loanCalcDialogRef) {
+      this.loanCalcDialogRef = this.dialog.open(LoanCalculatorComponent, {
+        hasBackdrop: false, // Taustaelementti (backdrop) poistetaan, jolloin tausta pysyy klikattavana
+        disableClose: true, // estä käyttäjää sulkemasta dialogia ulkopuolisella klikkauksella
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Lainalaskuri dialogi suljettiin');
-    });
+      // tilataan dialogin sulkemistapahtuma
+      this.loanCalcDialogRef.afterClosed().subscribe(result => {
+        console.log('Lainalaskin dialogi suljettiin');
+
+        // tyhjennetään viite dialogiin
+        this.loanCalcDialogRef = null;
+      });
+    }
+    // Muutoin ilmoitetaan käyttäjälle, että vain yksi voi olla auki kerrallaan
+    else {
+      this.popUpService.openDialog('Lainalaskin on jo avattu, vain yksi voi olla auki kerrallaan');
+      console.log('Lainalaskuri on jo auki');
+    }
   }
 
   logout() {

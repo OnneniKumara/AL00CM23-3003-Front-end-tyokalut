@@ -77,6 +77,7 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: '/frontpage',
+    data: {title: 'Etusivu'},
     pathMatch: 'full'
   },
 
